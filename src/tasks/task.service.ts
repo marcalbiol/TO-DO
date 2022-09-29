@@ -1,9 +1,10 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { Task } from './entities/task.entity';
 import { Repository, DataSource } from 'typeorm';
+import { UsersService } from "../users/users.service";
 
 @Injectable()
 export class TaskService {
@@ -13,12 +14,17 @@ export class TaskService {
   constructor(
     @InjectRepository(Task)
     private taskRepository: Repository<Task>,
+    private usersService: UsersService,
     private DataSource: DataSource
   ){
 
   }
-  create(createCuentaDto: CreateTaskDto) {
-    return 'This action adds a new cuenta';
+  create(task: Task, id): Promise<Task> {
+
+    this.usersService.findOneById(id);
+    // TODO CONTROLAR ERROR AQUI Y ENVIAR ERROR 400
+    task.user = id;
+    return this.taskRepository.save(task)
   }
 
   findAll(): Promise<Task[]> {
@@ -27,16 +33,16 @@ export class TaskService {
 
   async findOne(id: number): Promise<Task> {
 
-    let cuenta: any
+    let task: any
 
-    cuenta = await this.taskRepository.findOne({
+    task = await this.taskRepository.findOne({
       where: {
         id: id
       }
     });
-    if(!cuenta) throw new NotFoundException("cuenta no encontrada")
+    if(!task) throw new NotFoundException("task no encontrada")
 
-    return cuenta;
+    return task;
   }
 
   findOneSalary(id: number){

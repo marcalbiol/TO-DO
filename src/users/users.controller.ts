@@ -28,12 +28,15 @@ export class UsersController {
   @Post()
   @HttpCode(200)
   async createClient(@Res() response, @Body() user: CreateUserDto) {
-    const User = await this.usersService.createCliente(user);
+
+    const User = await this.usersService.createUser(user);
     return response.status(HttpStatus.CREATED).json({
       User
     });
-
   }
+
+  //TODO LOGIN METHOD POST()
+
 
   @Get()
   async fetchAll(@Res() response, @Query() paginationDto: PaginationDto) {
@@ -46,6 +49,7 @@ export class UsersController {
 
   @Get("/:value") // by Id
   async findById(@Res() response, @Param("value") value: any) {
+
     const user = await this.usersService.findOneById(value);
     return response.status(HttpStatus.OK).json({
       user

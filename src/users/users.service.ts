@@ -1,74 +1,99 @@
-import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException, ParseIntPipe } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from './entities/user.entity';
-import { Repository } from 'typeorm';
-import { query } from 'express';
-import {
-  paginate,
-  Pagination,
-  IPaginationOptions,
-} from 'nestjs-typeorm-paginate';
-import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
+import { createCipheriv, randomBytes, scrypt } from "crypto";
+import { promisify } from "util";
+import { InjectRepository } from "@nestjs/typeorm";
+import { CreateUserDto } from "./dto/create-user.dto";
+import { UpdateUserDto } from "./dto/update-user.dto";
+import { User } from "./entities/user.entity";
+import { Repository } from "typeorm";
 
 @Injectable()
 export class UsersService {
 
-  private cliente: User[]
+
+  private users: User[];
 
   constructor(
     @InjectRepository(User)
-    private clienteRepository: Repository<User>
-  ){}
+    private userRepository: Repository<User>
+  ) {
 
-  createCliente(cliente: CreateUserDto): Promise<User>{
+  }
 
-    try{
-      return this.clienteRepository.save(cliente);
+  createUser(user: CreateUserDto): Promise<User> {
 
-    }catch(error){
-      if(error.code === 1062){
-        throw new BadRequestException('Telefono duplicado')
+    try {
+      user.password = this.encryptPw(user.password);
+      return this.userRepository.save(user);
+
+    } catch (error) {
+      if (error.code === 1062) {
+        throw new BadRequestException("Este nombre de usuario ya existe");
       }
       console.log(error);
-      throw new InternalServerErrorException(`No puedes crear un nuevo cliente, check serverlog`)
+      throw new InternalServerErrorException(`No puedes crear un nuevo usuario, check serverlog`);
     }
   }
-    
-  async findAll(): Promise<User[]>{
-  
-    return await this.clienteRepository.find()
+
+  async findAll(): Promise<User[]> {
+
+    return await this.userRepository.find();
   }
 
- async findOneById(value: any): Promise<User> {
+  async findOneById(value: any): Promise<User> {
 
-      let client: any
+    let user: any;
 
-      // id
-      if(!isNaN(value)){
-          client = await this.clienteRepository.findOne({
-      where: {
-        id: value
-      }
-     });
+    // id
+    if (!isNaN(value)) {
+      user = await this.userRepository.findOne({
+        where: {
+          id: value
+        }
+      });
     }
-
-
-    if(!client) throw new NotFoundException("Cliente no encontrado");
-  
-   return client;
-}
+    if (!user) throw new NotFoundException("Usuario no encontrado");
+    return user;
+  }
 
   update(id: number, updateClienteDto: UpdateUserDto) {
-    return `This action updates a #${id} cliente`;
+    //TODO cambiar password
+    return `This action updates a #${id} user`;
   }
 
   async remove(id: number) {
-  return await this.clienteRepository.delete(id)
+
+    return await this.userRepository.delete(id);
   }
 
-  fillData(cliente: User[]){
-    this.clienteRepository.save(cliente);
+  fillData(user: User[]) {
+
+    this.userRepository.save(user);
   }
+
+  //TODO CREAR UNA CLASE A PARTE PARA ESTAS 2 FUNCIONES
+  // metodo para encryptar pw
+  encryptPw(value: string) {
+    const crypto = require("crypto");
+    const ENC = "bf3c199c2470cb477d907b1e0917c17b";
+    const IV = "5183666c72eec9e4";
+    const ALGO = "aes-256-cbc";
+
+    let cipher = crypto.createCipheriv(ALGO, ENC, IV);
+    let encrypted = cipher.update(value, "utf8", "base64");
+    encrypted += cipher.final("base64");
+    return encrypted;
+  }
+
+  decryptPw(value: string) {
+    const crypto = require("crypto");
+    const ENC = "bf3c199c2470cb477d907b1e0917c17b";
+    const IV = "5183666c72eec9e4";
+    const ALGO = "aes-256-cbc";
+
+    let decipher = crypto.createDecipheriv(ALGO, ENC, IV);
+    let decrypted = decipher.update(value, "base64", "utf8");
+    return decrypted + decipher.final("utf8");
+  }
+
 }

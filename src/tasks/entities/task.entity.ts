@@ -12,10 +12,9 @@ export class Task {
   description: string;
 
   @ManyToOne(() => User, (user) => user.tasks)
-  user: User
+  user: number
 
-  @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
-  date: Date
+
 
 
 }

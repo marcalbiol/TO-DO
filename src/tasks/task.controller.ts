@@ -9,12 +9,17 @@ import { Task } from './entities/task.entity';
 @Controller('tasks')
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
-/*
-  @Post()
-  create(@Body() createCuentaDto: CreateTaskDto) {
-    return this.taskService.create(createCuentaDto);
+
+  @Post("/:id")
+  create(@Body() task: Task, @Res() response, @Param("id") id: number) {
+
+    const tasks = this.taskService.create(task, id)
+    return response.status(HttpStatus.OK).json({
+      tasks
+    });
   }
 
+/*
   @Get()
   async fetchAll(@Res() response) {
       const tareas = await this.taskService.findAll();

@@ -1,6 +1,4 @@
 import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
-import { createCipheriv, randomBytes, scrypt } from "crypto";
-import { promisify } from "util";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
@@ -41,7 +39,7 @@ export class UsersService {
   }
 
 
-  async findOneById(value: any) {
+  async findOneById(value: any): Promise<User> {
 
     let user: any;
 
@@ -51,7 +49,8 @@ export class UsersService {
         where: {
           id: value
         }
-      });
+      }
+      );
     }
     if (!user) throw new NotFoundException("Usuario no encontrado");
     return user;
@@ -65,20 +64,6 @@ export class UsersService {
   async remove(id: number) {
 
     return await this.userRepository.delete(id);
-  }
-
-  async findUser(userId: number): Promise<boolean> {
-
-    let user = this.userRepository.findOne({
-      where: {
-        id: userId
-      }
-    })
-
-    if (user) {
-      return true
-    }
-    return false
   }
 
   fillData(user: User[]) {

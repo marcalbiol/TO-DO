@@ -47,8 +47,8 @@ export class UsersController {
     });
   }
 
-  @Get("/:value") // by Id
-  async findById(@Res() response, @Param("value") value: any) {
+  @Get("/:id") // by Id
+  async findById(@Res() response, @Param("id") value: any) {
 
     const user = await this.usersService.findOneById(value);
     return response.status(HttpStatus.OK).json({

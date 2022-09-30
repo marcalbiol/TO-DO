@@ -59,21 +59,10 @@ export class TaskService {
   }
 
 
-  async remove(userId: number, id: number) {
-    console.log("usuario" + userId + "id" + id);
+   async remove(id: number) {
 
-    let exists = this.usersService.findUser(userId)
-
-    console.log(exists);
-
-    if (exists) {
-      console.log("lo borra");
-
-      return this.taskRepository.delete(id);
-    }
-    console.log("no lo borra");
-
-    throw new NotFoundException("No encontrado")
+    //FIXME
+    return await this.taskRepository.delete(id);
   }
 
   fillData(cuenta: Task[]){

@@ -26,12 +26,10 @@ export class TaskController {
     return this.taskService.findOne(id);
   }
 
-  @Delete(':userId/:id')
-  remove(@Param('userId') userId: number, @Param('id') id: number, @Res() response) {
-    console.log("usuario" + userId + "id" + id);
+  @Delete('/:id')
+  remove(@Param('id') id: number, @Res() response) {
 
-
-    return this.taskService.remove(userId, id);
+    return this.taskService.remove(id);
     //TODO response
   }
 
@@ -60,10 +58,6 @@ export class TaskController {
    // saldo.saldo = thi
     return await this.taskService.sendMoney(id, saldo, value);
   }
-
-
-
-
 
   @Get(':id/salary')
     async getSalaryById(@Param('id') id: number){

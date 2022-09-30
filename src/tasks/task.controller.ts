@@ -21,6 +21,11 @@ export class TaskController {
   }
 
 
+  @Get("/:id")
+  getById(@Param('id') id: number){
+    return this.taskService.findOne(id);
+  }
+
   @Delete(':userId/:id')
   remove(@Param('userId') userId: number, @Param('id') id: number, @Res() response) {
     console.log("usuario" + userId + "id" + id);

@@ -34,7 +34,6 @@ export class TaskService {
 
 
   async findOne(id: number): Promise<Task> {
-
     let task: any
 
     task = await this.taskRepository.findOne({

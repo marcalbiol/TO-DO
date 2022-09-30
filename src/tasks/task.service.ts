@@ -5,6 +5,7 @@ import { UpdateTaskDto } from './dto/update-task.dto';
 import { Task } from './entities/task.entity';
 import { Repository, DataSource } from 'typeorm';
 import { UsersService } from "../users/users.service";
+import { User } from "src/users/entities/user.entity";
 
 @Injectable()
 export class TaskService {
@@ -21,8 +22,8 @@ export class TaskService {
   }
   create(task: Task, id): Promise<Task> {
 
-    this.usersService.findOneById(id);
-    // TODO CONTROLAR ERROR AQUI Y ENVIAR ERROR 400
+    let userExists = this.usersService.findOneById(id);
+
     task.user = id;
     return this.taskRepository.save(task)
   }
@@ -30,6 +31,7 @@ export class TaskService {
   findAll(): Promise<Task[]> {
     return this.taskRepository.find();
   }
+
 
   async findOne(id: number): Promise<Task> {
 
@@ -45,47 +47,34 @@ export class TaskService {
     return task;
   }
 
-  findOneSalary(id: number){
 
-    const salary =  this.DataSource
-    .getRepository(Task)
-    .createQueryBuilder("cuenta")
-    .select("cuenta.saldo")
-    .where("cuenta.id = :id", {id: id})
-    .getOne()
-      
-    return salary;
-  }
-
-  async update(id: number, cuenta: Task) {
+  async update(id: number, task: UpdateTaskDto) {
 
     const taskExists = await this.findOne(id)
 
-    let cuentaUpd: any;
+    let taskUpd: any;
 
-    cuentaUpd = this.taskRepository.update(id, cuenta)
-   
-    return cuentaUpd;
-    }
-  
+    taskUpd = this.taskRepository.update(id, task)
 
-    /*
-  sendMoney(id: number, cuenta: Cuenta, value: number){
-    // al enviar se resta el actual cuenta
-    cuenta.saldo = cuenta.saldo -= value;
-    console.log(cuenta.saldo)
-    return this.taskRepository.update(id, cuenta)
+    return taskUpd;
   }
 
-     */
- 
-  
-  remove(id: number) { /*
-    const{deleted Count}=await this.pokemonModel.de leteOne _id:id});
-    if(deletedCount ===0)
-      throw new Bad RequestException(`Pokemon with id"${id}"not found`);
-    return;
-    */
+
+  async remove(userId: number, id: number) {
+    console.log("usuario" + userId + "id" + id);
+
+    let exists = this.usersService.findUser(userId)
+
+    console.log(exists);
+
+    if (exists) {
+      console.log("lo borra");
+
+      return this.taskRepository.delete(id);
+    }
+    console.log("no lo borra");
+
+    throw new NotFoundException("No encontrado")
   }
 
   fillData(cuenta: Task[]){

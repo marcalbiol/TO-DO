@@ -40,7 +40,8 @@ export class UsersService {
     return await this.userRepository.find();
   }
 
-  async findOneById(value: any): Promise<User> {
+
+  async findOneById(value: any) {
 
     let user: any;
 
@@ -64,6 +65,20 @@ export class UsersService {
   async remove(id: number) {
 
     return await this.userRepository.delete(id);
+  }
+
+  async findUser(userId: number): Promise<boolean> {
+
+    let user = this.userRepository.findOne({
+      where: {
+        id: userId
+      }
+    })
+
+    if (user) {
+      return true
+    }
+    return false
   }
 
   fillData(user: User[]) {

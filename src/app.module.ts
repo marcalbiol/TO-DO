@@ -17,11 +17,11 @@ import { Task } from "./tasks/entities/task.entity";
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'root',
+      password: 'rootroot',
       database: 'todo_app',
       entities: [User, Task],
       synchronize: true,
-      dropSchema: true,
+      dropSchema: false,
       autoLoadEntities: true,
       keepConnectionAlive: true
     }), UsersModule, TaskModule, SeedModule, CommonModule

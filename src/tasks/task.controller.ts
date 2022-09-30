@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Res, HttpStatus, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Res, HttpStatus, Put, HttpCode, Query } from '@nestjs/common';
 import { response } from 'express';
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -10,13 +10,24 @@ import { Task } from './entities/task.entity';
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
-  @Post("/:id")
-  create(@Body() task: Task, @Res() response, @Param("id") id: number) {
+  @Post("/:userId")
+  @HttpCode(204)
+  create(@Body() task: Task, @Res() response, @Param("userId") userId: number) {
 
-    const tasks = this.taskService.create(task, id)
+    const tasks = this.taskService.create(task, userId)
     return response.status(HttpStatus.OK).json({
       tasks
     });
+  }
+
+
+  @Delete(':userId/:id')
+  remove(@Param('userId') userId: number, @Param('id') id: number, @Res() response) {
+    console.log("usuario" + userId + "id" + id);
+
+
+    return this.taskService.remove(userId, id);
+    //TODO response
   }
 
 /*
@@ -27,6 +38,7 @@ export class TaskController {
           tareas
       })
   }
+
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.taskService.findOne(+id);
@@ -46,10 +58,7 @@ export class TaskController {
 
 
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.taskService.remove(+id);
-  }
+
 
   @Get(':id/salary')
     async getSalaryById(@Param('id') id: number){

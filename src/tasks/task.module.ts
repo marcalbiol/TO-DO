@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Task } from './entities/task.entity';
 import { AutomapperModule } from '@automapper/nestjs';
 import { UsersModule } from "../users/users.module";
+import { UsersService } from '../users/users.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Task]), AutomapperModule, UsersModule],

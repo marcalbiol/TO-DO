@@ -61,22 +61,8 @@ export class TaskController {
       return this.taskService.findOne(+id);
     }
 
-    @Put(':id')
-    async update(@Param('id') id: number, @Body() cuenta: Cuenta) {
-      return await this.taskService.update(id, cuenta)
 
-    }
-  /*
-    @Patch('/:id/transferencia/enviar/:value')
-    async sendMoney(@Param('id') id:number, @Body() saldo: Cuenta, @Param('value') value: number){
-     // saldo.saldo = thi
-      return await this.taskService.sendMoney(id, saldo, value);
-    }
-
-    @Get(':id/salary')
-      async getSalaryById(@Param('id') id: number){
-        return await this.taskService.findOneSalary(id)
-
-    }
-  */
+   */
 }
+
+

@@ -3,7 +3,7 @@ import { IsNumber, IsString } from "class-validator";
 export class CreateTaskDto {
 
   @IsString()
-  description: string
+  description: string;
 
   @IsNumber()
   user: number;

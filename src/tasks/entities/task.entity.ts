@@ -12,9 +12,7 @@ export class Task {
   description: string;
 
   @ManyToOne(() => User, (user) => user.tasks)
-  user: number
-
-
+  user: number;
 
 
 }

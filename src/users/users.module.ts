@@ -9,6 +9,6 @@ import { AutomapperModule } from '@automapper/nestjs';
   imports: [TypeOrmModule.forFeature([User]), AutomapperModule],
   controllers: [UsersController],
   providers: [UsersService],
-  exports: [UsersService, UsersModule]
+  exports: [UsersService, UsersModule, TypeOrmModule.forFeature([User])]
 })
 export class UsersModule {}

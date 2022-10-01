@@ -1,31 +1,47 @@
-import { Inject, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
-import { InjectRepository } from '@nestjs/typeorm';
-import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
-import { Task } from './entities/task.entity';
-import { Repository, DataSource } from 'typeorm';
+import {
+  BadRequestException,
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException
+} from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { CreateTaskDto } from "./dto/create-task.dto";
+import { UpdateTaskDto } from "./dto/update-task.dto";
+import { Task } from "./entities/task.entity";
+import { Repository, DataSource } from "typeorm";
 import { UsersService } from "../users/users.service";
 import { User } from "src/users/entities/user.entity";
 
 @Injectable()
 export class TaskService {
 
-  private task: Task[] = []
-  
+  private task: Task[] = [];
+
   constructor(
     @InjectRepository(Task)
     private taskRepository: Repository<Task>,
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
     private usersService: UsersService,
     private DataSource: DataSource
-  ){
+  ) {
 
   }
-  create(task: Task, id): Promise<Task> {
 
-    let userExists = this.usersService.findOneById(id);
+  async create(task: CreateTaskDto): Promise<Task> {
 
-    task.user = id;
-    return this.taskRepository.save(task)
+    let userId = task.user;
+    let user = await this.userRepository.findOne({
+      where: {
+        id: userId
+      }
+    });
+
+    if (!user) throw new BadRequestException("Este usuario no existe");
+
+    return this.taskRepository.save(task);
+
   }
 
   findAll(): Promise<Task[]> {
@@ -34,14 +50,14 @@ export class TaskService {
 
 
   async findOne(id: number): Promise<Task> {
-    let task: any
+    let task: any;
 
     task = await this.taskRepository.findOne({
       where: {
         id: id
       }
     });
-    if(!task) throw new NotFoundException("task no encontrada")
+    if (!task) throw new NotFoundException("task no encontrada");
 
     return task;
   }
@@ -49,29 +65,29 @@ export class TaskService {
 
   async update(id: number, task: UpdateTaskDto) {
 
-    const taskExists = await this.findOne(id)
+    const taskExists = await this.findOne(id);
 
     let taskUpd: any;
 
-    taskUpd = this.taskRepository.update(id, task)
+    taskUpd = this.taskRepository.update(id, task);
 
     return taskUpd;
   }
 
 
-   async remove(id: number) {
+  async remove(id: number) {
 
     //FIXME
     return await this.taskRepository.delete(id);
   }
 
-  fillData(cuenta: Task[]){
-    this.taskRepository.save(cuenta)
+  fillData(cuenta: Task[]) {
+    this.taskRepository.save(cuenta);
   }
 
-  private handleError(error: any){
-    
-    if(error === 1300){
+  private handleError(error: any) {
+
+    if (error === 1300) {
       // codigo thor new... luego se llama al metodo privado dentro del 
       //catch con el parametro del error
     }

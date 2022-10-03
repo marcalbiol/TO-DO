@@ -15,14 +15,13 @@ import {
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
-import { User } from "./entities/user.entity";
 import { PaginationDto } from "../common/dto/pagination.dto";
+import { AuthService } from "../auth/auth.service";
 
 @Controller("users")
 export class UsersController {
-
-
-  constructor(private readonly usersService: UsersService) {
+  constructor(private readonly usersService: UsersService,
+              private readonly authService: AuthService ) {
   }
 
   @Post()
@@ -54,6 +53,12 @@ export class UsersController {
     return response.status(HttpStatus.OK).json({
       user
     });
+  }
+
+  @Post("/login")
+  login(@Body() user: CreateUserDto ){
+    return this.authService.validateUser(user.username, user.password);
+
   }
 
   @Patch(":id")

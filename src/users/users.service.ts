@@ -1,9 +1,16 @@
-import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
+import {
+  BadRequestException, forwardRef,
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException
+} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { User } from "./entities/user.entity";
 import { Repository } from "typeorm";
+import { AuthService } from "../auth/auth.service";
 
 @Injectable()
 export class UsersService {
@@ -13,7 +20,8 @@ export class UsersService {
 
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>
+    private userRepository: Repository<User>,
+    private readonly authService: AuthService
   ) {
 
   }
@@ -81,6 +89,8 @@ export class UsersService {
 
     this.userRepository.save(user);
   }
+
+
 
   //TODO CREAR UNA CLASE A PARTE PARA ESTAS 2 FUNCIONES
   // metodo para encryptar pw

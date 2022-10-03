@@ -23,8 +23,6 @@ export class TaskService {
         private taskRepository: Repository<Task>,
         @InjectRepository(User)
         private userRepository: Repository<User>,
-        private usersService: UsersService,
-        private DataSource: DataSource
     ) {
 
     }

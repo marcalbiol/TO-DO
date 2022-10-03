@@ -39,7 +39,7 @@ export class UsersService {
   }
 
 
-  async findOneById(value: any): Promise<User> {
+  async findOneById(value: number): Promise<User> {
 
     let user: any;
 
@@ -52,6 +52,17 @@ export class UsersService {
       }
       );
     }
+    if (!user) throw new NotFoundException("Usuario no encontrado");
+    return user;
+  }
+
+  async findOneByName(value: string): Promise<User>{
+
+    let user = await this.userRepository.findOne({
+      where: {
+        username: value
+      }
+    })
     if (!user) throw new NotFoundException("Usuario no encontrado");
     return user;
   }

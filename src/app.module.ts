@@ -10,6 +10,7 @@ import { CommonModule } from "./common/common.module";
 import { TaskModule } from "./tasks/task.module";
 import { Task } from "./tasks/entities/task.entity";
 import { ConfigModule } from "@nestjs/config";
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -27,7 +28,7 @@ import { ConfigModule } from "@nestjs/config";
       dropSchema: false,
       autoLoadEntities: true,
       keepConnectionAlive: true
-    }), UsersModule, TaskModule, SeedModule, CommonModule
+    }), UsersModule, TaskModule, SeedModule, CommonModule, AuthModule
   ],
   controllers: [AppController],
   providers: [AppService]

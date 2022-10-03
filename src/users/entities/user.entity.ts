@@ -16,7 +16,7 @@ export class User {
   @Column()
   password: string;
 
-  @OneToMany(() => Task, (task) => task.user)
+  @OneToMany(() => Task, (task) => task.user, { onDelete: 'CASCADE'})
   tasks?: Task[];
 
   @Column({ default: true })
@@ -24,6 +24,7 @@ export class User {
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   createAt?: Date;
-
-
 }
+
+
+

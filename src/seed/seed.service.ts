@@ -4,12 +4,9 @@ import { USERS_SEED } from "./entities/user.entity";
 import { TASK_SEED } from "./entities/task.entity";
 import { TaskService } from "../tasks/task.service";
 
-// import { axios} from 'axios';
-
 @Injectable()
 export class SeedService {
 
-  // private readonly axios: AxiosInstance = axios;
 
   constructor(
     // injeccion

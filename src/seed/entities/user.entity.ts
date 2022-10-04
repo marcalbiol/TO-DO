@@ -1,5 +1,3 @@
-import { User } from '../../users/entities/user.entity';
+import { User } from "../../users/entities/user.entity";
 
-export const USERS_SEED: User[] = [
-
-]
+export const USERS_SEED: User[] = [];

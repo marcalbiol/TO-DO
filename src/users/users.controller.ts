@@ -16,7 +16,6 @@ import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { PaginationDto } from "../common/dto/pagination.dto";
-import { AuthService } from "../auth/auth.service";
 
 @Controller("users")
 export class UsersController {
@@ -33,8 +32,7 @@ export class UsersController {
     });
   }
 
-  //TODO LOGIN METHOD POST()
-
+  //TODO ValidationPipe
 
   @Get()
   async fetchAll(@Res() response, @Query() paginationDto: PaginationDto) {

@@ -11,6 +11,6 @@ export class Task {
   @Column()
   description: string;
 
-  @ManyToOne(() => User, (user) => user.tasks, {onDelete: 'CASCADE'})
+  @ManyToOne(() => User, (user) => user.tasks, { onDelete: "CASCADE" })
   user: number;
 }

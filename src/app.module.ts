@@ -10,13 +10,13 @@ import { CommonModule } from "./common/common.module";
 import { TaskModule } from "./tasks/task.module";
 import { Task } from "./tasks/entities/task.entity";
 import { ConfigModule } from "@nestjs/config";
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from "./auth/auth.module";
 
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-      TypeOrmModule.forRoot({
+    TypeOrmModule.forRoot({
       type: "mysql",
       host: process.env.DATABASE_HOST,
       port: 33060,

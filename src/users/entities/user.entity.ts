@@ -16,7 +16,7 @@ export class User {
   @Column()
   password: string;
 
-  @OneToMany(() => Task, (task) => task.user, { onDelete: 'CASCADE'})
+  @OneToMany(() => Task, (task) => task.user, { onDelete: "CASCADE" })
   tasks?: Task[];
 
   @Column({ default: true })

@@ -1,35 +1,34 @@
-import {
-  BadRequestException, forwardRef,
-  Inject,
-  Injectable,
-  InternalServerErrorException,
-  NotFoundException
-} from "@nestjs/common";
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { User } from "./entities/user.entity";
 import { Repository } from "typeorm";
-import { AuthService } from "../auth/auth.service";
+import * as bcrypt from "bcrypt";
 
 @Injectable()
 export class UsersService {
 
-
-  private users: User[];
-
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>,
-    private readonly authService: AuthService
-  ) {
+    private userRepository: Repository<User>) {
 
   }
 
-  createUser(user: CreateUserDto): Promise<User> {
+  async encrypt(pass: any) {
+
+    const salt = await bcrypt.genSalt();
+    return await bcrypt.hash(pass, salt);
+
+  }
+
+
+  async createUser(user: CreateUserDto): Promise<User> {
+
+    const password = this.encrypt(user.password);
 
     try {
-      user.password = this.encryptPw(user.password);
+      user.password = await password;
       return this.userRepository.save(user);
 
     } catch (error) {
@@ -54,23 +53,23 @@ export class UsersService {
     // id
     if (!isNaN(value)) {
       user = await this.userRepository.findOne({
-        where: {
-          id: value
+          where: {
+            id: value
+          }
         }
-      }
       );
     }
     if (!user) throw new NotFoundException("Usuario no encontrado");
     return user;
   }
 
-  async findOneByName(value: string): Promise<User>{
+  async findOneByName(value: string): Promise<User> {
 
     let user = await this.userRepository.findOne({
       where: {
         username: value
       }
-    })
+    });
     if (!user) throw new NotFoundException("Usuario no encontrado");
     return user;
   }
@@ -90,31 +89,5 @@ export class UsersService {
     this.userRepository.save(user);
   }
 
-
-
-  //TODO CREAR UNA CLASE A PARTE PARA ESTAS 2 FUNCIONES
-  // metodo para encryptar pw
-  encryptPw(value: string) {
-    const crypto = require("crypto");
-    const ENC = "bf3c199c2470cb477d907b1e0917c17b";
-    const IV = "5183666c72eec9e4";
-    const ALGO = "aes-256-cbc";
-
-    let cipher = crypto.createCipheriv(ALGO, ENC, IV);
-    let encrypted = cipher.update(value, "utf8", "base64");
-    encrypted += cipher.final("base64");
-    return encrypted;
-  }
-
-  decryptPw(value: string) {
-    const crypto = require("crypto");
-    const ENC = "bf3c199c2470cb477d907b1e0917c17b";
-    const IV = "5183666c72eec9e4";
-    const ALGO = "aes-256-cbc";
-
-    let decipher = crypto.createDecipheriv(ALGO, ENC, IV);
-    let decrypted = decipher.update(value, "base64", "utf8");
-    return decrypted + decipher.final("utf8");
-  }
 
 }

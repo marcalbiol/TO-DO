@@ -20,8 +20,7 @@ import { AuthService } from "../auth/auth.service";
 
 @Controller("users")
 export class UsersController {
-  constructor(private readonly usersService: UsersService,
-              private readonly authService: AuthService ) {
+  constructor(private readonly usersService: UsersService) {
   }
 
   @Post()
@@ -55,11 +54,6 @@ export class UsersController {
     });
   }
 
-  @Post("/login")
-  login(@Body() user: CreateUserDto ){
-    return this.authService.validateUser(user.username, user.password);
-
-  }
 
   @Patch(":id")
   update(@Param("id") id: string, @Body() updateClienteDto: UpdateUserDto) {

@@ -1,16 +1,33 @@
-import { Body, Controller, Post } from "@nestjs/common";
-import { CreateUserDto } from "../users/dto/create-user.dto";
-import { AuthService } from "./auth.service";
+import {
+    Body,
+    Controller,
+    Request,
+    HttpException,
+    HttpStatus,
+    Post,
+    UseGuards,
+    UnauthorizedException
+} from "@nestjs/common";
+import {AuthService} from "./auth.service";
+import {AuthGuard} from "@nestjs/passport";
+import {CreateUserDto} from "../users/dto/create-user.dto";
 
 @Controller("auth")
 export class AuthController {
-  constructor(private authService: AuthService) {
-  }
+    constructor(private authService: AuthService) {
+    }
 
-  //TODO Cambiar dto a uno para login
-  @Post("/login")
-  login(@Body() user: CreateUserDto) {
-    return this.authService.validateUser(user.username, user.password);
+    //TODO Cambiar dto a uno para login
 
-  }
+    @Post()
+    async login(@Body() user: CreateUserDto): Promise<{ access_token: string }> {
+        const {username, password} = user;
+        const valid = await this.authService.validateUser(username, password);
+        if (!valid) {
+            throw new UnauthorizedException();
+        }
+        return await this.authService.generateAccessToken(username);
+    }
+
+
 }

@@ -23,7 +23,6 @@ export class UsersService {
 
     }
 
-
     async createUser(user: CreateUserDto): Promise<UserDto> {
         const {username} = user;
 
@@ -64,8 +63,7 @@ export class UsersService {
 
     async findOne(value: object): Promise<User> {
 
-        let user = await this.userRepository.findOne(value);
-        return user;
+        return await this.userRepository.findOne(value);
 
     }
 

@@ -13,7 +13,7 @@ import {JwtModule} from "@nestjs/jwt";
         session: false
     }),
         JwtModule.register({
-            secret: 'secretKey',
+            secret: 'secretKey', // VARIABLE DE ENTORNO
             signOptions: {
                 expiresIn: '60s',
             }

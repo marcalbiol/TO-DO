@@ -19,7 +19,7 @@ export class AuthController {
 
     //TODO Cambiar dto a uno para login
 
-    @Post()
+    @Post("/login")
     async login(@Body() user: CreateUserDto): Promise<{ access_token: string }> {
         const {username, password} = user;
         const valid = await this.authService.validateUser(username, password);

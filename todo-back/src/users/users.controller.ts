@@ -10,18 +10,24 @@ import {
   HttpStatus,
   HttpCode,
   Query,
-  ParseIntPipe
+  ParseIntPipe, UseGuards
 } from "@nestjs/common";
 import { UsersService } from "./users.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { PaginationDto } from "../common/dto/pagination.dto";
+import { AuthGuard } from '@nestjs/passport';
+import {ApiBearerAuth} from "@nestjs/swagger";
+import {PassportModule} from "@nestjs/passport";
 
 @Controller("users")
 export class UsersController {
   constructor(private readonly usersService: UsersService) {
   }
 
+  // TODO IMPLEMENT AUTH JSTOKEN
+  //@UseGuards(AuthGuard())
+  @ApiBearerAuth()
   @Post()
   @HttpCode(200)
   async createClient(@Res() response, @Body() user: CreateUserDto) {

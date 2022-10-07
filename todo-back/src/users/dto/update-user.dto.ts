@@ -1,7 +1,12 @@
-import { PartialType } from "@nestjs/mapped-types";
-import { CreateUserDto } from "./create-user.dto";
+import {ReadUserDto} from "./read-user.dto";
+import {AutoMap} from "@automapper/classes";
 
-export class UpdateUserDto extends PartialType(CreateUserDto) {
+export class UpdateUserDto extends ReadUserDto {
 
-  // TODO cambiar contraseña
+    // TODO cambiar contraseña
+
+    @AutoMap()
+    password: string
+
+    //updateDate: Date
 }

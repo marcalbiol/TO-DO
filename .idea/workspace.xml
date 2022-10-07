@@ -4,25 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="477a900d-14a1-48d0-aca1-3cf81208ef4d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/todo-project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-back/src/profile/user-profile.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/src/tasks/task.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/tasks/task.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/src/tasks/task.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/tasks/task.service.ts" afterDir="false" />
+    <list default="true" id="477a900d-14a1-48d0-aca1-3cf81208ef4d" name="Changes" comment="Add mapping userEntity to entityDTO">
+      <change afterPath="$PROJECT_DIR$/todo-back/src/users/dto/read-user.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-back/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-back/src/profile/user-profile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/profile/user-profile.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-back/src/users/dto/create-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/dto/create-user.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-back/src/users/dto/login-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/dto/login-user.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-back/src/users/dto/update-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/dto/update-user.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-back/src/users/entities/user.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/entities/user.entity.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-back/src/users/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/users.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/src/users/users.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/users.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-back/src/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/users.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/app.component.spec.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,25 +42,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Marc_/WebstormProjects/todo-project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "C:\\Users\\Marc_\\WebstormProjects\\todo-project\\todo-back\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marc_/WebstormProjects/todo-project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Marc_\\WebstormProjects\\todo-project\\todo-back\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Unnamed" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" nameIsGenerated="true" port="9229">
       <method v="2" />
@@ -85,8 +77,17 @@
       <workItem from="1664976710662" duration="166000" />
       <workItem from="1664976987742" duration="228000" />
       <workItem from="1664977352895" duration="1094000" />
-      <workItem from="1665124691489" duration="6577000" />
+      <workItem from="1665124691489" duration="8007000" />
+      <workItem from="1665139155665" duration="2085000" />
     </task>
+    <task id="LOCAL-00001" summary="Add access relationships Entities">
+      <created>1665137846280</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1665137846280</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,5 +109,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/todo-project" />
     </ignored-roots>
+    <MESSAGE value="Add access relationships Entities" />
+    <MESSAGE value="Add mapping userEntity to entityDTO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add mapping userEntity to entityDTO" />
   </component>
 </project>

@@ -8,21 +8,27 @@ import {AutoMap} from "@automapper/classes";
 @Entity()
 export class User {
 
+  @AutoMap()
   @PrimaryGeneratedColumn()
   id?: number;
 
+  @AutoMap()
   @Column()
   username?: string;
 
+  @AutoMap()
   @Column()
   password: string;
 
+  @AutoMap()
   @OneToMany(() => Task, (task) => task.user, { onDelete: "CASCADE", onUpdate: "CASCADE" })
   tasks?: Task[];
 
+  @AutoMap()
   @Column({ default: true })
   isActive?: boolean;
 
+  @AutoMap()
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   createAt?: Date;
 }

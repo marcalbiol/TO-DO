@@ -4,9 +4,3 @@ export class LoginUserDto {
     readonly username: string;
     readonly password: string;
 }
-
-export class UserDto {
-
-    username: string;
-    password: string;
-}

@@ -49,7 +49,8 @@ export class TaskService {
     task = await this.taskRepository.findOne({
       where: {
         id: id
-      }
+      },
+      relations: ['user']
     });
     if (!task) throw new NotFoundException("task no encontrada");
 

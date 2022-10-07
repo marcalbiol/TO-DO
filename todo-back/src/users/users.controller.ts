@@ -19,6 +19,7 @@ import { PaginationDto } from "../common/dto/pagination.dto";
 import { AuthGuard } from '@nestjs/passport';
 import {ApiBearerAuth} from "@nestjs/swagger";
 import {PassportModule} from "@nestjs/passport";
+import {UserDto} from "./dto/login-user.dto";
 
 @Controller("users")
 export class UsersController {
@@ -50,7 +51,7 @@ export class UsersController {
   }
 
   @Get("/:id") // by Id
-  async findById(@Res() response, @Param("id") value: any) {
+  async findById(@Res() response, @Param("id") value: any): Promise<UserDto> {
 
     const user = await this.usersService.findOneById(value);
     return response.status(HttpStatus.OK).json({
@@ -61,11 +62,13 @@ export class UsersController {
 
   @Patch(":id")
   update(@Param("id") id: string, @Body() updateClienteDto: UpdateUserDto) {
+
     return this.usersService.update(+id, updateClienteDto);
   }
 
   @Delete(":id")
   remove(@Param("id") id: number) {
+
     return this.usersService.remove(id);
   }
 }

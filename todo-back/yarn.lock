@@ -44,15 +44,25 @@
     "ora" "5.4.1"
     "rxjs" "6.6.7"
 
-"@automapper/core@^8.7.5", "@automapper/core@8.7.5":
-  "integrity" "sha512-tLIZYC0SYbTAg3TQUR4KZFs6Fgf3dO/LOeM8TXF+wpHJDMi78gewgCrr8XVKNGwblJky22THxtL/rdVJlZf1cg=="
-  "resolved" "https://registry.npmjs.org/@automapper/core/-/core-8.7.5.tgz"
-  "version" "8.7.5"
+"@automapper/classes@^8.7.6":
+  "integrity" "sha512-90wCxQJixXzS36Pypnf/wQOcks+YyXklh6d9cztwhBmKphX0cxM+kBao0Y3Lbmhpjut0GB4ITdJJMWGVuS0dxg=="
+  "resolved" "https://registry.npmjs.org/@automapper/classes/-/classes-8.7.6.tgz"
+  "version" "8.7.6"
 
-"@automapper/nestjs@^8.7.5":
-  "integrity" "sha512-k9iq4dfsqsDosROAproVU+nsswRLnW2utnRzHBhQqkeHNNAaEo/PBSqLSiOL5FXa7l4whfORSEaMgdx7B81Upg=="
-  "resolved" "https://registry.npmjs.org/@automapper/nestjs/-/nestjs-8.7.5.tgz"
-  "version" "8.7.5"
+"@automapper/core@^8.7.6", "@automapper/core@8.7.6":
+  "integrity" "sha512-btaewJ27PWjiulZmVFFwtSlHUyHp8Qifhy/3fI3RIEKmgjkiC/VqIwvjKjesdwsSI5S3zEJMlRQGMYi3L+igcg=="
+  "resolved" "https://registry.npmjs.org/@automapper/core/-/core-8.7.6.tgz"
+  "version" "8.7.6"
+
+"@automapper/nestjs@^8.7.6":
+  "integrity" "sha512-MqcETATU49L0kh1stj21H4l/wOuAam0CRbVB2unzwd2Br/ILS9SgpFJRMJID/pYzrGDs5SMm05QdvFcmRWOExw=="
+  "resolved" "https://registry.npmjs.org/@automapper/nestjs/-/nestjs-8.7.6.tgz"
+  "version" "8.7.6"
+
+"@automapper/types@^6.3.1":
+  "integrity" "sha512-f0Y/Q4dVfKH6SQyzS5bPk+hZ4pSxzVNAOPEHdEAUe3gAc6ou43DCBYERuOaVSZ3zbWJbVt1KgWVNLP1dj9OIeg=="
+  "resolved" "https://registry.npmjs.org/@automapper/types/-/types-6.3.1.tgz"
+  "version" "6.3.1"
 
 "@azure/abort-controller@^1.0.0", "@azure/abort-controller@^1.0.4":
   "integrity" "sha512-TrRLIoSQVzfAJX9H1JeFjzAoDGcoK1IYX1UImfceTZpsyYfWr09Ss1aHW1y5TrrR3iq6RZLBwJ3E24uwPhwahw=="
@@ -4855,7 +4865,7 @@
   dependencies:
     "resolve" "^1.1.6"
 
-"reflect-metadata@^0.1.12", "reflect-metadata@^0.1.13":
+"reflect-metadata@^0.1.12", "reflect-metadata@^0.1.13", "reflect-metadata@~0.1.13":
   "integrity" "sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg=="
   "resolved" "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.13.tgz"
   "version" "0.1.13"

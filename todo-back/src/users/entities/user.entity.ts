@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Task } from "../../tasks/entities/task.entity";
 import { JoinColumn } from "typeorm";
+import {AutoMap} from "@automapper/classes";
 
 @Injectable()
 @Entity()
@@ -16,7 +17,7 @@ export class User {
   @Column()
   password: string;
 
-  @OneToMany(() => Task, (task) => task.user, { onDelete: "CASCADE" })
+  @OneToMany(() => Task, (task) => task.user, { onDelete: "CASCADE", onUpdate: "CASCADE" })
   tasks?: Task[];
 
   @Column({ default: true })

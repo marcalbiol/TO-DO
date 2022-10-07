@@ -6,13 +6,15 @@ import {User} from "./entities/user.entity";
 import {Repository} from "typeorm";
 import * as bcrypt from "bcrypt";
 import {UserDto} from "./dto/login-user.dto";
+import {InjectMapper} from "@automapper/nestjs";
 
 @Injectable()
 export class UsersService {
 
     constructor(
         @InjectRepository(User)
-        private userRepository: Repository<User>) {
+        private userRepository: Repository<User>,
+        ) {
 
     }
 
@@ -20,7 +22,6 @@ export class UsersService {
 
         const salt = await bcrypt.genSalt();
         return await bcrypt.hash(pass, salt);
-
     }
 
     async createUser(user: CreateUserDto): Promise<UserDto> {
@@ -35,7 +36,6 @@ export class UsersService {
         const pass = this.encrypt(user.password);
         user.password = await pass;
         return this.userRepository.save(user);
-
     }
 
     async findAll(): Promise<User[]> {
@@ -53,7 +53,8 @@ export class UsersService {
             user = await this.userRepository.findOne({
                     where: {
                         id: value
-                    }
+                    },
+                    relations: ['tasks']
                 }
             );
         }

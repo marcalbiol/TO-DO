@@ -11,6 +11,8 @@ import { TaskModule } from "./tasks/task.module";
 import { Task } from "./tasks/entities/task.entity";
 import { ConfigModule } from "@nestjs/config";
 import { AuthModule } from "./auth/auth.module";
+import {AutomapperModule} from "@automapper/nestjs";
+import {classes} from "@automapper/classes";
 
 
 @Module({
@@ -28,7 +30,10 @@ import { AuthModule } from "./auth/auth.module";
       dropSchema: false,
       autoLoadEntities: true,
       keepConnectionAlive: true
-    }), UsersModule, TaskModule, SeedModule, CommonModule, AuthModule
+    }), UsersModule, TaskModule, SeedModule, CommonModule, AuthModule,
+      AutomapperModule.forRoot({
+          strategyInitializer: classes()
+      })
   ],
   controllers: [AppController],
   providers: [AppService]

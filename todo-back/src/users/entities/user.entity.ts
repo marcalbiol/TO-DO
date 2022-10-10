@@ -18,7 +18,7 @@ export class User {
 
   @AutoMap()
   @Column()
-  password: string;
+  password?: string;
 
   @AutoMap()
   @OneToMany(() => Task, (task) => task.user, { onDelete: "CASCADE", onUpdate: "CASCADE" })

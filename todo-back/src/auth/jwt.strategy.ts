@@ -17,6 +17,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         });
     }
 
+    //FIXME MAPPEO
+    /*
     async validate(payload: JwtPayload): Promise<User> {
         const user = await this.userService.findOneById(payload.userId);
         if (!user) {
@@ -24,5 +26,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         }
         return user;
     }
+
+     */
 
 }

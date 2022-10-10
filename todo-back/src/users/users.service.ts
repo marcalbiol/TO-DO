@@ -7,7 +7,7 @@ import {Repository} from "typeorm";
 import * as bcrypt from "bcrypt";
 import {InjectMapper} from "@automapper/nestjs";
 import {Mapper} from "@automapper/core";
-import {ReadUserDto} from "./dto/read-user.dto";
+import {ReadUserDto, ReadUserNoPwDto} from "./dto/read-user.dto";
 
 @Injectable()
 export class UsersService {
@@ -19,6 +19,9 @@ export class UsersService {
         private readonly classMapper: Mapper
     ) {
     }
+
+
+    //TODO NO REPETIR CODIGO
 
     async encrypt(pass: any) {
 
@@ -43,24 +46,21 @@ export class UsersService {
         } catch (ex) {
             throw new Error(`create error: ${ex.message}.`);
         }
-
-
     }
 
     async findAll(): Promise<ReadUserDto[]> {
 
         try {
-            return this.classMapper.mapArrayAsync(await this.userRepository.find(), User, ReadUserDto)
+            return this.classMapper.mapArrayAsync(await this.userRepository.find({relations: ['tasks']}), User, ReadUserDto)
         } catch (ex) {
             throw new Error(`findAll error: ${ex.message}.`);
         }
     }
 
 
-    async findOneById(value: number): Promise<User> {
+    async findOneById(value: number) {
 
-        //TODO automapper
-        let user: any;
+        let user: any
 
         // id
         if (!isNaN(value)) {
@@ -73,7 +73,7 @@ export class UsersService {
             );
         }
         if (!user) throw new NotFoundException("Usuario no encontrado");
-        return user;
+        return this.classMapper.mapAsync(await user, User, ReadUserNoPwDto);
     }
 
     async findOne(value: object): Promise<User> {
@@ -87,9 +87,16 @@ export class UsersService {
     }
 
 
-    update(id: number, updateClienteDto: UpdateUserDto) {
-        //TODO cambiar password automapper
-        return `This action updates a #${id} user`;
+    async update(id: number, updateUser: UpdateUserDto) {
+        // find user by id
+        const userInDb = await this.userRepository.findOne({
+            where: {id}
+        })
+
+        let pass = this.encrypt(updateUser.password); // encrypta la nueva password
+        userInDb.password = await pass;
+
+        return this.userRepository.save(userInDb);
     }
 
     async remove(id: number) {

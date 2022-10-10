@@ -42,6 +42,7 @@ export class TaskController {
 
     @Patch("/:id")
     async update(@Body() task: UpdateTaskDto, @Param("id") id: number) {
+        //TODO cambiar response
         return await this.taskService.update(id, task);
     }
 

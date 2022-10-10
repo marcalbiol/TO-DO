@@ -36,7 +36,7 @@ export class UsersService {
             where: {username}
         })
 
-        if (userInDb) throw new HttpException('User already exists', HttpStatus.BAD_REQUEST);
+        if (userInDb) throw new HttpException('El usuario ya existe', HttpStatus.BAD_REQUEST);
 
         try {
             const pass = this.encrypt(user.password);
@@ -44,16 +44,16 @@ export class UsersService {
             const entity = this.classMapper.map(user, CreateUserDto, User)
             return this.classMapper.mapAsync(await this.userRepository.save(entity), User, ReadUserDto)
         } catch (ex) {
-            throw new Error(`create error: ${ex.message}.`);
+            throw new Error(`error: ${ex.message}.`);
         }
     }
 
-    async findAll(): Promise<ReadUserDto[]> {
+    async findAll(): Promise<ReadUserNoPwDto[]> {
 
         try {
-            return this.classMapper.mapArrayAsync(await this.userRepository.find({relations: ['tasks']}), User, ReadUserDto)
+            return this.classMapper.mapArrayAsync(await this.userRepository.find({relations: ['tasks']}), User, ReadUserNoPwDto)
         } catch (ex) {
-            throw new Error(`findAll error: ${ex.message}.`);
+            throw new Error(`error: ${ex.message}.`);
         }
     }
 

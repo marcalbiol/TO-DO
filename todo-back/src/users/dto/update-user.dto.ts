@@ -2,11 +2,11 @@ import {ReadUserDto} from "./read-user.dto";
 import {AutoMap} from "@automapper/classes";
 
 export class UpdateUserDto {
-
-    // TODO cambiar contraseña
-    readonly id?: number;
+    //TODO automap con la entidad y actualizar fecha
 
     password: string
+
+    isActive: boolean
 
     //updateDate: Date
 }

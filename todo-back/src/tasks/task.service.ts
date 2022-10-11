@@ -45,6 +45,7 @@ export class TaskService {
 
   async findOne(id: number): Promise<Task> {
     let task: any;
+    //TODO DTOS TASK
     //TODO CREAR METODO
     task = await this.taskRepository.findOne({
       where: {

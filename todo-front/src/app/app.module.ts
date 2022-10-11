@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
 import {UsersService} from "./users/users.service";
+import {CookieService} from "ngx-cookie-service";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import {UsersService} from "./users/users.service";
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UsersService],
+  providers: [UsersService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,30 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="477a900d-14a1-48d0-aca1-3cf81208ef4d" name="Changes" comment="Add register component with register in view">
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/login/user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/nav/nav.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/register/register.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/register/register.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/register/register.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/users/users.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/users/users.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/users/users.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/users/users.service.ts" afterDir="false" />
+    <list default="true" id="477a900d-14a1-48d0-aca1-3cf81208ef4d" name="Changes" comment="Add implement swal validation, save token in cookies">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/src/tasks/entities/task.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/tasks/entities/task.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/src/tasks/task.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/tasks/task.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/login/login.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/login/login.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/nav/nav.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/nav/nav.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/login/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/users/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/register/register.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/users/users.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +63,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Marc_\WebstormProjects\todo-project\todo-front\src\app\users" />
       <recent name="C:\Users\Marc_\WebstormProjects\todo-project\todo-front\src\app\nav" />
       <recent name="C:\Users\Marc_\WebstormProjects\todo-project\todo-front\src\app\login" />
     </key>
@@ -104,7 +92,7 @@
       <workItem from="1665381449076" duration="14660000" />
       <workItem from="1665396757498" duration="2576000" />
       <workItem from="1665407794389" duration="13266000" />
-      <workItem from="1665468096631" duration="2565000" />
+      <workItem from="1665468096631" duration="6515000" />
     </task>
     <task id="LOCAL-00001" summary="Add access relationships Entities">
       <created>1665137846280</created>
@@ -134,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665396978435</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add new component users and register and login form">
+      <created>1665473901586</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1665473901586</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +156,8 @@
     <MESSAGE value="Add update user method (cambiar contraseña) and new maps relations" />
     <MESSAGE value="Add new components angular project and update DTOs" />
     <MESSAGE value="Add register component with register in view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add register component with register in view" />
+    <MESSAGE value="Add new component users and register and login form" />
+    <MESSAGE value="Add implement swal validation, save token in cookies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add implement swal validation, save token in cookies" />
   </component>
 </project>

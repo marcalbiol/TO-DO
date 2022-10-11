@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    const user = {username: this.user.username, password: this.user.password};
+    const user = {id: this.user.id, username: this.user.username, password: this.user.password, task: this.user.task}
     this.userService.register(user).subscribe(value => {
       this.userService.setToken(value) // token
       Swal.fire(

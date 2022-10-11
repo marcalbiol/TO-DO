@@ -16,6 +16,10 @@ export class UsersService {
   constructor(private http: HttpClient, private route: Router, private cookies: CookieService) {
   }
 
+  logout(token: any){
+    this.cookies.delete(token);
+  }
+
 
   login(user: User): Observable<any> { // component login
 
@@ -25,6 +29,10 @@ export class UsersService {
   register(user: User): Observable<any> { // component register
 
     return this.http.post<User>(this.urlEndPoint + "/users", user);
+  }
+
+  getUser(id: number){
+    return this.http.get(this.urlEndPoint + "/users/" + id);
   }
 
   setToken(token: any) {

@@ -61,7 +61,6 @@ export class UsersService {
     async findOneById(value: number) {
 
         let user: any
-
         // id
         if (!isNaN(value)) {
             user = await this.userRepository.findOne({
@@ -73,7 +72,7 @@ export class UsersService {
             );
         }
         if (!user) throw new NotFoundException("Usuario no encontrado");
-        return this.classMapper.mapAsync(await user, User, ReadUserNoPwDto);
+        return this.classMapper.mapAsync(await user, User, ReadUserDto);
     }
 
     async findOne(value: object): Promise<User> {

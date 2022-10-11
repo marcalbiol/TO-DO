@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   //TODO confirmar password field
 
   constructor(private userService: UsersService, private router: Router) {
+
   }
 
   ngOnInit(): void {
@@ -36,10 +37,13 @@ export class LoginComponent implements OnInit {
   }
 
 
+
   login() {
-    const user = {username: this.user.username, password: this.user.password}
+    const user = {id: this.user.id, username: this.user.username, password: this.user.password, task: this.user.task}
     this.userService.login(user).subscribe( value => {
+        console.log(user)
       this.userService.setToken(value)
+        console.log(value)
       Swal.fire(
         '',
         `Hola, ${user.username}`,

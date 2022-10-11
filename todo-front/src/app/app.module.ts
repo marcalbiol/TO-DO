@@ -11,6 +11,8 @@ import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
 import {UsersService} from "./users/users.service";
 import {CookieService} from "ngx-cookie-service";
+import { HomeComponent } from './home/home.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {CookieService} from "ngx-cookie-service";
     NavComponent,
     LoginComponent,
     RegisterComponent,
-    UsersComponent
+    UsersComponent,
+    HomeComponent,
+    AuthComponent
   ],
   imports: [
     HttpClientModule,
@@ -26,7 +30,7 @@ import {CookieService} from "ngx-cookie-service";
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [UsersService, CookieService],
   bootstrap: [AppComponent]

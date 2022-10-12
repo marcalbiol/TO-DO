@@ -13,6 +13,7 @@ import {UsersService} from "./users/users.service";
 import {CookieService} from "ngx-cookie-service";
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AuthComponent } from './auth/auth.component';
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [UsersService, CookieService],
+  providers: [UsersService, CookieService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

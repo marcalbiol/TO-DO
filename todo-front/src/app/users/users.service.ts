@@ -11,35 +11,10 @@ import {CookieService} from "ngx-cookie-service";
 })
 export class UsersService {
 
-  private urlEndPoint: string = 'http://localhost:3000'
+
 
   constructor(private http: HttpClient, private route: Router, private cookies: CookieService) {
   }
 
-  logout(token: any){
-    this.cookies.delete(token);
-  }
-
-
-  login(user: User): Observable<any> { // component login
-
-    return this.http.post(this.urlEndPoint + "/auth/login", user);
-  }
-
-  register(user: User): Observable<any> { // component register
-
-    return this.http.post<User>(this.urlEndPoint + "/users", user);
-  }
-
-  getUser(id: number){
-    return this.http.get(this.urlEndPoint + "/users/" + id);
-  }
-
-  setToken(token: any) {
-    this.cookies.set("token", token);
-  }
-  getToken() {
-    return this.cookies.get("token");
-  }
 
 }

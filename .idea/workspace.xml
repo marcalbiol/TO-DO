@@ -4,23 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="477a900d-14a1-48d0-aca1-3cf81208ef4d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/home/home.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/home/home.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/home/home.component.ts" afterDir="false" />
+    <list default="true" id="1b2b4bb2-3f08-4c19-b463-ad279798f4ca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/todo-project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/src/auth/jwt.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/auth/jwt.strategy.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/src/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/users.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/login/login.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/login/login.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/nav/nav.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/nav/nav.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/nav/nav.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/nav/nav.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/nav/nav.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/register/register.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/register/register.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/users/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/users/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/users/users.service.ts" afterDir="false" />
@@ -30,21 +27,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="TypeScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2FiZ8yLfEx84CObElaJe70pZHDF" />
+  <component name="ProjectId" id="2G2w7xkIiZ1uEhavBdYamShFwWa" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -55,99 +44,28 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Marc_/source/repos/marcalbiol/PokemonAPI/PokemonAPI",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "nodejs_package_manager_path": "yarn",
     "ts.external.directory.path": "C:\\Users\\Marc_\\WebstormProjects\\todo-project\\todo-back\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Marc_\WebstormProjects\todo-project\todo-front\src\app\users" />
-      <recent name="C:\Users\Marc_\WebstormProjects\todo-project\todo-front\src\app\nav" />
-      <recent name="C:\Users\Marc_\WebstormProjects\todo-project\todo-front\src\app\login" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="Unnamed" type="NodeJSConfigurationType" application-parameters="run " nameIsGenerated="true" node-parameters="yarn" working-dir="$PROJECT_DIR$/todo-back">
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="477a900d-14a1-48d0-aca1-3cf81208ef4d" name="Changes" comment="" />
-      <created>1664976709454</created>
+      <changelist id="1b2b4bb2-3f08-4c19-b463-ad279798f4ca" name="Changes" comment="" />
+      <created>1665599829023</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1664976709454</updated>
-      <workItem from="1664976710662" duration="166000" />
-      <workItem from="1664976987742" duration="228000" />
-      <workItem from="1664977352895" duration="1094000" />
-      <workItem from="1665124691489" duration="8007000" />
-      <workItem from="1665139155665" duration="4544000" />
-      <workItem from="1665155860160" duration="477000" />
-      <workItem from="1665156356561" duration="52000" />
-      <workItem from="1665161260029" duration="38000" />
-      <workItem from="1665381449076" duration="14660000" />
-      <workItem from="1665396757498" duration="2576000" />
-      <workItem from="1665407794389" duration="13266000" />
-      <workItem from="1665468096631" duration="6841000" />
-      <workItem from="1665479122918" duration="1061000" />
-      <workItem from="1665480481409" duration="4475000" />
+      <updated>1665599829023</updated>
+      <workItem from="1665599831878" duration="476000" />
     </task>
-    <task id="LOCAL-00001" summary="Add access relationships Entities">
-      <created>1665137846280</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1665137846280</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Add mapping userEntity to entityDTO">
-      <created>1665141620970</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1665141620970</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Add update user method (cambiar contraseña) and new maps relations">
-      <created>1665393774061</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1665393774061</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Add new components angular project and update DTOs">
-      <created>1665396978434</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1665396978435</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Add new component users and register and login form">
-      <created>1665473901586</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1665473901586</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Add implement swal validation, save token in cookies">
-      <created>1665478806212</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1665478806212</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,16 +84,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <ignored-roots>
-      <path value="$PROJECT_DIR$/todo-project" />
-    </ignored-roots>
-    <MESSAGE value="Add access relationships Entities" />
-    <MESSAGE value="Add mapping userEntity to entityDTO" />
-    <MESSAGE value="Add update user method (cambiar contraseña) and new maps relations" />
-    <MESSAGE value="Add new components angular project and update DTOs" />
-    <MESSAGE value="Add register component with register in view" />
-    <MESSAGE value="Add new component users and register and login form" />
-    <MESSAGE value="Add implement swal validation, save token in cookies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add implement swal validation, save token in cookies" />
   </component>
 </project>

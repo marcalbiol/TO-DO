@@ -5,7 +5,7 @@
       <div class="card-text">
 
         <!--<div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div>-->
-        <form  (ngSubmit)="onSubmit()" [formGroup]="form" *ngIf="form" method="post">
+        <form (ngSubmit)="onSubmit()" [formGroup]="form" *ngIf="form" method="post">
           <div class="form-group">
             <input [(ngModel)]="user.username" type="email" class="form-control form-control-sm"
                    aria-describedby="emailHelp" formControlName="username" id="username"
@@ -17,7 +17,7 @@
                    formControlName="password" id="password"
                    name="password" placeholder="Contraseña">
           </div>
-          <button type="submit" (click)="login()" class="btn btn-primary btn-block">Log in</button>
+          <button type="submit" (click)="Login()" class="btn btn-primary btn-block">Log in</button>
         </form>
       </div>
     </div>

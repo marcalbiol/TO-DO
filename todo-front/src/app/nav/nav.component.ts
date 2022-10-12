@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 import {UsersService} from "../users/users.service";
 
 @Component({
@@ -8,12 +9,10 @@ import {UsersService} from "../users/users.service";
 })
 export class NavComponent implements OnInit {
 
-  constructor(private userService: UsersService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  logout(token: any){
-    this.userService.logout(token);
-  }
+
 }

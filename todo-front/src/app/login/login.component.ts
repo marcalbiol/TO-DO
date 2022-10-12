@@ -4,6 +4,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {Route, Router} from "@angular/router";
 import {UsersService} from "../users/users.service";
 import Swal from "sweetalert2";
+import {AuthService} from '../auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,10 @@ export class LoginComponent implements OnInit {
 
   form!: FormGroup;
   user: User = new User();
+
   //TODO confirmar password field
 
-  constructor(private userService: UsersService, private router: Router) {
+  constructor(public authService: AuthService, private router: Router) {
 
   }
 
@@ -36,30 +38,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  Login() {
+    console.log("Te estas logeando...");
 
-
-  login() {
-    const user = {id: this.user.id, username: this.user.username, password: this.user.password, task: this.user.task}
-    this.userService.login(user).subscribe( value => {
-        console.log(user)
-      this.userService.setToken(value)
-        console.log(value)
-      Swal.fire(
-        '',
-        `Hola, ${user.username}`,
-        'success'
-      )
-      this.router.navigateByUrl('/') // te envia a la pagina principal
-    },
-      error => {
-        //TODO controlar errores 401, 400...
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Credenciales incorrectas',
-          footer: '<a href="">Why do I have this issue?</a>'
-        })
-      }
-      )
+    this.authService.login(this.user.username, this.user.password);
   }
 }

@@ -1,13 +1,9 @@
 <nav class="navbar bg-light">
   <div class="container-fluid">
     <a routerLink="/inicio" routerLinkActive="active" class="navbar-brand">TO-DO app</a>
-    <ul class="navbar-nav navbar-right">
-      <a routerLink="/register" routerLinkActive="active">Registrarse</a>
-    </ul>
-    <!--
-    <ul class="navbar-nav navbar-right">
-      <button type="submit" (click)="logout('')" class="btn btn-primary btn-block">Log out</button>
-    </ul>
-    -->
+    <a class="nav-link"  style="float:right" routerLink="/register" routerLinkActive="active" *ngIf="!authService.logIn">Registro</a>
+
+    <a class="nav-link"  style="float:right" routerLink="/login" routerLinkActive="active" *ngIf="!authService.logIn">Login</a>
+    <a class ="nav-link" (click)="authService.logout()" href="#" *ngIf="authService.logIn">Logout</a>
   </div>
 </nav>

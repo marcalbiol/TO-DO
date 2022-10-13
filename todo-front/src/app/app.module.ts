@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -10,7 +9,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
 import {UsersService} from "./users/users.service";
-import {CookieService} from "ngx-cookie-service";
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './auth/auth.service';
@@ -33,7 +31,7 @@ import { AuthService } from './auth/auth.service';
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [UsersService, CookieService, AuthService],
+  providers: [UsersService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

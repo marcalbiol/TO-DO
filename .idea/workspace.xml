@@ -4,26 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="201b4a2b-9910-4f83-91e7-bc4b1c62e1ce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/footer/footer.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/footer/footer.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/footer/footer.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/src/app/home/home.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/todo-project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="201b4a2b-9910-4f83-91e7-bc4b1c62e1ce" name="Changes" comment="Add footer component, user validation after login succf, and get data info about user from database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/src/users/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/users.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/src/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/users.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/login/login.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/nav/nav.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/nav/nav.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/app/users/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/users/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/register/register.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,8 +61,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665727574790</updated>
-      <workItem from="1665727576574" duration="8550000" />
+      <workItem from="1665727576574" duration="11363000" />
     </task>
+    <task id="LOCAL-00001" summary="Add footer component, user validation after login succf, and get data info about user from database">
+      <created>1665740255520</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1665740255520</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,5 +89,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Add footer component, user validation after login succf, and get data info about user from database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add footer component, user validation after login succf, and get data info about user from database" />
   </component>
 </project>

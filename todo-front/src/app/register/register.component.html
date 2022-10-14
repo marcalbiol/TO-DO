@@ -1,31 +1,43 @@
-<div class="global-container">
-  <div class="card login-form">
-    <div class="card-body">
-      <h3 class="card-title text-center">Sign up</h3>
-      <div class="card-text">
+<body class="bg-gray-10 ">
+<form (ngSubmit)="onSubmit()" [formGroup]="form" *ngIf="form" method="post">
+  <div class="flex justify-center h-screen w-screen items-center">
 
-        <!--<div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div>-->
-        <form (ngSubmit)="onSubmit()" [formGroup]="form" method="post">
-          <div class="form-group">
-            <input [(ngModel)]="user.username" type="email" class="form-control form-control-sm"
-                   aria-describedby="emailHelp" formControlName="username" id="username"
-                   name="username"
-                   placeholder="Nombre usuario">
-          </div>
-          <div class="form-group">
-            <input [(ngModel)]="user.password" type="password" class="form-control form-control-sm"
-                   formControlName="password" id="password"
-                   name="password" placeholder="Contraseña">
-          </div>
-          <button type="submit" (click)="register()" class="btn btn-primary btn-block">Create</button>
+    <div class="w-full md:w-1/2 flex flex-col items-center ">
+      <!-- text login -->
+      <h1 class="text-center text-2xl font-bold text-gray-600 mb-6">SIGN UP</h1>
+      <!-- email input -->
+      <div class="w-3/4 mb-6">
+        <input [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" type="username" name="username"
+               id="username"
+               class="w-full py-4 px-8 bg-slate-200 placeholder:font-semibold rounded hover:ring-1 outline-blue-500"
+               placeholder="Username">
+      </div>
+      <!-- password input -->
+      <div class="w-3/4 mb-6">
+        <input [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password" name="password"
+               id="password"
+               class="w-full py-4 px-8 bg-slate-200 placeholder:font-semibold rounded hover:ring-1 outline-blue-500 "
+               placeholder="Password">
+      </div>
+      <!-- PASSWORD CONF input -->
+      <div class="w-3/4 mb-6">
+        <input type="password" name="password" id="passwordConfirmation"
+               class="w-full py-4 px-8 bg-slate-200 placeholder:font-semibold rounded hover:ring-1 outline-blue-500 "
+               placeholder="Password">
+      </div>
 
-          <div class="sign-up">
-            Ya estas registrado? <a routerLink="/login">Log in</a>
-          </div>
-        </form>
+      <!-- button -->
+      <div class="w-3/4 mt-4">
+        <button type="submit" (click)="register()"
+                class="py-4 bg-blue-400 w-full rounded text-blue-50 font-bold hover:bg-blue-700"> SIGN UP
+        </button>
+        <div class="sign-up">
+          Ya estas registrado? <a routerLink="/login">Log in</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>
+</body>
 
 

@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import swal from 'sweetalert2';
 import {UsersService} from "../users/users.service";
 import Swal from "sweetalert2";
-import { AuthService } from '../auth/auth.service';
+import {AuthService} from '../auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -38,20 +38,21 @@ export class RegisterComponent implements OnInit {
   }
 
   //TODO CAMBIAR METODO A AUTHSERVICE == LOGIN
+  // TODO CONFIRM PASSWORD FIELD
   register() {
     const user = {username: this.user.username, password: this.user.password}
     this.authService.register(user).subscribe(value => {
-      Swal.fire(
-        'Good job!',
-        'You clicked the button!',
-        'success'
-      )
-      console.log(`Usuario ${user.username} creado con éxito`)
-    },
+        Swal.fire(
+          'Good job!',
+          'You clicked the button!',
+          'success'
+        )
+        console.log(`Usuario ${user.username} creado con éxito`)
+      },
       error => {
-      // validacion de la password y user
+        // validacion de la password y user
         console.log(error);
       }
-      )
+    )
   }
 }

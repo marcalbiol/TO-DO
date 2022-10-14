@@ -1,11 +1,17 @@
-<nav class="navbar bg-light">
-
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <a routerLink="/inicio" routerLinkActive="active" class="navbar-brand">TO-DO app</a>
-    <a class="nav-link" style="float:right" routerLink="/register" routerLinkActive="active" *ngIf="!authService.logIn">Registro</a>
-
-    <a class="nav-link" style="float:right" routerLink="/login" routerLinkActive="active" *ngIf="!authService.logIn">Login</a>
-    <a class="nav-link" (click)="authService.logout()" href="#" *ngIf="authService.logIn">Logout</a>
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/home" routerLinkActive="active">To-do App</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a routerLink="/home" routerLinkActive="active">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#" routerLink="" routerLinkActive="active" *ngIf="!authService.logIn"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#" routerLink="/login" routerLinkActive="active" *ngIf="!authService.logIn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="#" (click)="authService.logout()" *ngIf="authService.logIn"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+    </ul>
   </div>
 </nav>
-

@@ -6,9 +6,9 @@ import {AppComponent} from "./app.component";
 import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
-  { path: "register", component: RegisterComponent, pathMatch: "full"},
+  { path: "", component: RegisterComponent, pathMatch: "full"},
   { path: "login", component: LoginComponent, pathMatch: "full"},
-  { path: "inicio", component: HomeComponent, pathMatch: "full"}
+  { path: "home", component: HomeComponent, pathMatch: "full"},
 ];
 
 @NgModule({

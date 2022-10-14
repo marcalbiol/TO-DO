@@ -4,6 +4,7 @@ import {User} from '../users/user';
 import {Observable} from 'rxjs';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import {HomeService} from "../home/home.service";
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,13 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
   public get logIn(): boolean {
     return (localStorage.getItem('token') !== null);
   }
+
 
   login(username: string, password: string) {
     return this.http.post(this.urlEndPoint + "/auth/login", {username: username, password: password})
@@ -31,13 +34,14 @@ export class AuthService {
           console.log(value);
           this.token = value; // guarda el token
           localStorage.setItem('token', this.token)
+          localStorage.setItem('user', username);
           // TODO REDIRECCIONAR A OTRA PAGINA
           Swal.fire(
             '',
             `Hola, ${username}`,
             'success'
           )
-          this.router.navigateByUrl('/') // te envia a la pagina principal
+          this.router.navigateByUrl('/home') // te envia a la pagina principal
         },
         error => {
           //TODO controlar errores 401, 400...
@@ -51,7 +55,7 @@ export class AuthService {
       )
   }
 
-  register(user: User): Observable<any> {
+  register(user: { password: string; username: string }): Observable<any> {
 
     return this.http.post<User>(this.urlEndPoint + "/users", user);
   }

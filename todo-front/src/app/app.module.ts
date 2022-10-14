@@ -12,6 +12,8 @@ import {UsersService} from "./users/users.service";
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './auth/auth.service';
+import { FooterComponent } from './footer/footer.component';
+import {HomeService} from "./home/home.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { AuthService } from './auth/auth.service';
     RegisterComponent,
     UsersComponent,
     HomeComponent,
-    AuthComponent
+    AuthComponent,
+    FooterComponent
   ],
   imports: [
     HttpClientModule,
@@ -31,7 +34,7 @@ import { AuthService } from './auth/auth.service';
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [UsersService, AuthService],
+  providers: [UsersService, AuthService, HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

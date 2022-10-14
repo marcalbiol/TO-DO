@@ -57,7 +57,21 @@ export class UsersService {
         }
     }
 
+    async findOneByName(name: string) {
 
+        let user: any
+        user = await this.userRepository.findOne({
+            where: {
+                username : name
+            },
+            relations: ['tasks']
+        })
+        if (!user) throw new NotFoundException("Usuario no encontrado");
+        return this.classMapper.mapAsync(await user, User, ReadUserDto);
+    }
+
+
+    // TODO buscar id y nombre en la misma funcion, depende de si es number o no.
     async findOneById(value: number) {
 
         let user: any

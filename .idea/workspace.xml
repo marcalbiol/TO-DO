@@ -4,25 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b2b4bb2-3f08-4c19-b463-ad279798f4ca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-front/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/todo-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/todo-project.iml" afterDir="false" />
+    <list default="true" id="201b4a2b-9910-4f83-91e7-bc4b1c62e1ce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/todo-front/src/app/footer/footer.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo-front/src/app/footer/footer.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo-front/src/app/footer/footer.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo-front/src/app/home/home.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/todo-project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-back/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-back/src/users/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/users.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-back/src/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-back/src/users/users.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/home/home.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/todo-front/src/app/nav/nav.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/nav/nav.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo-front/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-front/src/app/users/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/todo-front/src/app/users/user.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,8 +43,8 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2G2w7xkIiZ1uEhavBdYamShFwWa" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectId" id="2G7748HQpceIbbGrcG9SbwpmHWs" />
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -41,31 +54,28 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Marc_/WebstormProjects/todo-project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "C:\\Users\\marc.albiol.ext\\WebstormProjects\\todo-app\\todo-front\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\Marc_\\WebstormProjects\\todo-project\\todo-back\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1b2b4bb2-3f08-4c19-b463-ad279798f4ca" name="Changes" comment="" />
-      <created>1665599829023</created>
+      <changelist id="201b4a2b-9910-4f83-91e7-bc4b1c62e1ce" name="Changes" comment="" />
+      <created>1665727574790</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1665599829023</updated>
-      <workItem from="1665599831878" duration="476000" />
-      <workItem from="1665642165474" duration="2707000" />
-      <workItem from="1665650834364" duration="2326000" />
+      <updated>1665727574790</updated>
+      <workItem from="1665727576574" duration="8550000" />
     </task>
     <servers />
   </component>

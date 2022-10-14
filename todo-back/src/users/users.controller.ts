@@ -54,7 +54,7 @@ export class UsersController {
         });
     }
 
-    @Get("/:id") // by Id
+    @Get("id/:id") // by Id
     async findById(@Res() response, @Param("id") value: number) {
 
         const user = await this.usersService.findOneById(value);
@@ -63,6 +63,12 @@ export class UsersController {
         });
     }
 
+    @Get("username/:name")
+    async findByName(@Res() response, @Param("name") value: string){
+
+        const user = await this.usersService.findOneByName(value);
+        return response.status(HttpStatus.OK).json({user});
+    }
 
     @Patch(":id")
     update(@Param("id") id: number, @Body() updateUser: UpdateUserDto) {

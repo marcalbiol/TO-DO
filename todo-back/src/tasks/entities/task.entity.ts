@@ -1,17 +1,26 @@
-import { Injectable } from "@nestjs/common";
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { User } from "../../users/entities/user.entity";
+import {Injectable} from '@nestjs/common';
+import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
+import {User} from '../../users/entities/user.entity';
+import {AutoMap} from '@automapper/classes';
 
 @Injectable()
 @Entity()
 export class Task {
-  @PrimaryGeneratedColumn()
-  id?: number;
+    @AutoMap()
+    @PrimaryGeneratedColumn()
+    id?: number;
 
-  @Column()
-  description: string;
+    @AutoMap()
+    @Column()
+    description: string;
+
+    @AutoMap()
+    @ManyToOne(() => User, (user) => user.tasks, {onDelete: 'CASCADE'})
+    user: User | number;
+
+    @AutoMap()
+    @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+    createAt?: Date;
 
 
-  @ManyToOne(() => User, (user) => user.tasks, { onDelete: "CASCADE" })
-  user: number;
 }

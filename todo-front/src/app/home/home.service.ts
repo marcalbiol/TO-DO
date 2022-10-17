@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable, Subscription} from "rxjs";
-import {User} from "../users/user";
-import {AuthService} from "../auth/auth.service";
+import { HttpClient } from '@angular/common/http';
+import { User } from '../users/user';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HomeService {
+  private urlEndPoint: string = 'http://localhost:3000';
 
-  user: User;
-  private urlEndPoint: string = 'http://localhost:3000'
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
-  constructor(private http: HttpClient, private authService: AuthService) {
-    this.user = new User()
+  async getUser(username: string): Promise<any> {
+    return await this.http
+      .get<User[]>(this.urlEndPoint + '/users/username/' + username)
+      .toPromise();
   }
 
-  getUser(username: string): Subscription{
-    return this.http.get<User[]>(this.urlEndPoint + "/users/username/" + username)
-      .subscribe(value => {
-        console.log(value)
-      });
-  }
+  //TODO implementar metodo crear nueva tarea autenticansdo el jwt
 
+  // METODO BORRAR Y EDITAR
 }

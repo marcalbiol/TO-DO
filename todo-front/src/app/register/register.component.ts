@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {User} from "../users/user";
 import {Router} from "@angular/router";
-import swal from 'sweetalert2';
-import {UsersService} from "../users/users.service";
 import Swal from "sweetalert2";
 import {AuthService} from '../auth/auth.service';
 
@@ -34,7 +32,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     // code here after submit
-    console.info(this.form.value);
   }
 
   //TODO CAMBIAR METODO A AUTHSERVICE == LOGIN

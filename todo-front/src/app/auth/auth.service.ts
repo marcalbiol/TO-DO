@@ -19,12 +19,12 @@ export class AuthService {
 
 
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
   }
 
   public get logIn(): boolean {
-    return (localStorage.getItem('token') !== null);
+    return (sessionStorage.getItem('token') !== null);
   }
 
 
@@ -33,8 +33,8 @@ export class AuthService {
       .subscribe(value => {
           console.log(value);
           this.token = value; // guarda el token
-          localStorage.setItem('token', this.token)
-          localStorage.setItem('user', username);
+          sessionStorage.setItem('token', this.token)
+          sessionStorage.setItem('user', username);
           // TODO REDIRECCIONAR A OTRA PAGINA
           Swal.fire(
             '',
@@ -48,7 +48,7 @@ export class AuthService {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Credenciales incorrectas',
+            text: 'No tienes permiso para acceder',
             footer: '<a href="">Why do I have this issue?</a>'
           })
         }
@@ -59,10 +59,4 @@ export class AuthService {
 
     return this.http.post<User>(this.urlEndPoint + "/users", user);
   }
-
-  getUser(id: number) {
-    return this.http.get(this.urlEndPoint + "/users/" + id);
-  }
-
-
 }

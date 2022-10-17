@@ -1,13 +1,11 @@
-import { Injectable } from "@nestjs/common";
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Task } from "../../tasks/entities/task.entity";
-import { JoinColumn } from "typeorm";
-import {AutoMap} from "@automapper/classes";
+import { Injectable } from '@nestjs/common';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Task } from '../../tasks/entities/task.entity';
+import { AutoMap } from '@automapper/classes';
 
 @Injectable()
 @Entity()
 export class User {
-
   @AutoMap()
   @PrimaryGeneratedColumn()
   id?: number;
@@ -21,7 +19,10 @@ export class User {
   password?: string;
 
   @AutoMap()
-  @OneToMany(() => Task, (task) => task.user, { onDelete: "CASCADE", onUpdate: "CASCADE" })
+  @OneToMany(() => Task, (task) => task.user, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   tasks?: Task[];
 
   @AutoMap()
@@ -29,9 +30,6 @@ export class User {
   isActive?: boolean;
 
   @AutoMap()
-  @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createAt?: Date;
 }
-
-
-

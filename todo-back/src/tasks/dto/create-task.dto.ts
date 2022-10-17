@@ -1,11 +1,9 @@
-import { IsNumber, IsString } from "class-validator";
+import {IsString} from 'class-validator';
+import {Task} from "../entities/task.entity";
 
-export class CreateTaskDto {
+export class CreateTaskDto extends Task {
 
-  @IsString()
-  description: string;
-
-  @IsNumber()
-  user: number;
+    @IsString()
+    description: string;
 
 }

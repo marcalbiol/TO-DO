@@ -1,67 +1,36 @@
-import {
-    Controller,
-    Get,
-    Post,
-    Body,
-    Patch,
-    Param,
-    Delete,
-    Res,
-    HttpStatus,
-    Put,
-    HttpCode,
-    Query
-} from "@nestjs/common";
-import {response} from "express";
-import {TaskService} from "./task.service";
-import {CreateTaskDto} from "./dto/create-task.dto";
-import {UpdateTaskDto} from "./dto/update-task.dto";
-import {UpdateUserDto} from "../users/dto/update-user.dto";
-import {Task} from "./entities/task.entity";
+import {Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Res,} from '@nestjs/common';
+import {TaskService} from './task.service';
+import {CreateTaskDto} from './dto/create-task.dto';
+import {UpdateTaskDto} from './dto/update-task.dto';
+import {Task} from './entities/task.entity';
 
-@Controller("tasks")
+@Controller('tasks')
 export class TaskController {
     constructor(private readonly taskService: TaskService) {
     }
 
-    @Get("/:id")
-    getById(@Param("id") id: number) {
-
-        return this.taskService.findOne(id);
-    }
-
-    @Post()
+    @Post('/:userId')
     @HttpCode(204)
-    async create(@Body() task: CreateTaskDto, @Res() response) {
-
-        const tasks = await this.taskService.create(task);
-        return response.status(HttpStatus.OK).json({
-            tasks
-        });
+    async create(@Body() task: CreateTaskDto, @Res() response, @Param('userId') id: number): Promise<Task> {
+        const tasks = await this.taskService.create(task, id);
+        return response.status(HttpStatus.OK).json({tasks});
     }
 
-    @Patch("/:id")
-    async update(@Body() task: UpdateTaskDto, @Param("id") id: number) {
+    @Patch('/:id')
+    async update(@Body() task: UpdateTaskDto, @Param('id') id: number) {
         //TODO cambiar response
         return await this.taskService.update(id, task);
     }
 
-    @Delete("/:id")
-    remove(@Param("id") id: number, @Res() response) {
-
+    @Delete('/:id')
+    remove(@Param('id') id: number, @Res() response) {
         return this.taskService.remove(id);
         //TODO response
     }
 
-    /*
-      @Get()
-      async fetchAll(@Res() response) {
-          const tareas = await this.taskService.findAll();
-          return response.status(HttpStatus.OK).json({
-              tareas
-          })
-      }
-     */
+    @Get('/:userId')
+    async get(@Param('userId') id: number, @Res() response) {
+        let tasks = await this.taskService.findTask(id);
+        return response.status(HttpStatus.OK).json({tasks});
+    }
 }
-
-

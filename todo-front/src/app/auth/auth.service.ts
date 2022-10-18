@@ -37,7 +37,7 @@ export class AuthService {
           sessionStorage.setItem('user', username);
           // TODO REDIRECCIONAR A OTRA PAGINA
           Swal.fire(
-            '',
+          '',
             `Hola, ${username}`,
             'success'
           )

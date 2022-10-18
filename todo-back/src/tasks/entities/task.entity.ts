@@ -6,6 +6,7 @@ import {AutoMap} from '@automapper/classes';
 @Injectable()
 @Entity()
 export class Task {
+
     @AutoMap()
     @PrimaryGeneratedColumn()
     id?: number;
@@ -16,7 +17,7 @@ export class Task {
 
     @AutoMap()
     @ManyToOne(() => User, (user) => user.tasks, {onDelete: 'CASCADE'})
-    user: User | number;
+    user: User | number | string;
 
     @AutoMap()
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})

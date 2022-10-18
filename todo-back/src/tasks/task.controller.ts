@@ -9,28 +9,44 @@ export class TaskController {
     constructor(private readonly taskService: TaskService) {
     }
 
-    @Post('/:userId')
-    @HttpCode(204)
-    async create(@Body() task: CreateTaskDto, @Res() response, @Param('userId') id: number): Promise<Task> {
-        const tasks = await this.taskService.create(task, id);
-        return response.status(HttpStatus.OK).json({tasks});
-    }
-
-    @Patch('/:id')
-    async update(@Body() task: UpdateTaskDto, @Param('id') id: number) {
-        //TODO cambiar response
-        return await this.taskService.update(id, task);
-    }
-
-    @Delete('/:id')
-    remove(@Param('id') id: number, @Res() response) {
-        return this.taskService.remove(id);
-        //TODO response
-    }
 
     @Get('/:userId')
     async get(@Param('userId') id: number, @Res() response) {
         let tasks = await this.taskService.findTask(id);
         return response.status(HttpStatus.OK).json({tasks});
     }
+
+    @Post('/create/:userId')
+    @HttpCode(204)
+    async create(@Body() task: CreateTaskDto, @Res() response, @Param('userId') id: number): Promise<Task> {
+        const tasks = await this.taskService.create(task, id);
+        return response.status(HttpStatus.OK).json({tasks});
+    }
+
+
+
+    @Patch('/update/:taskId')
+    async update(@Body() task: UpdateTaskDto, @Param('taskId') taskId: number,
+                    @Res() response) {
+        let taskUpdated = await this.taskService.update(taskId, task);
+
+        if(taskUpdated.affected == 0) {
+            return response.status(HttpStatus.NOT_FOUND).json("Tarea no encontrada");
+        }
+        return response.status(HttpStatus.OK).json("Tarea actualizada");
+    }
+
+    @Delete('/delete/:id')
+    async remove(@Param('id') id: number, @Res() response) {
+
+        let taskRemoved = await this.taskService.remove(id);
+
+        if(taskRemoved.affected == 0) {
+            return response.status(HttpStatus.NOT_FOUND).json("Tarea no encontrada");
+        }
+        return response.status(HttpStatus.OK).json("Tarea eliminada");
+
+        //TODO response
+    }
+
 }

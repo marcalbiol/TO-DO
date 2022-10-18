@@ -7,7 +7,7 @@ import {Repository} from "typeorm";
 import * as bcrypt from "bcrypt";
 import {InjectMapper} from "@automapper/nestjs";
 import {Mapper} from "@automapper/core";
-import {ReadUserDto, ReadUserNoPwDto} from "./dto/read-user.dto";
+import {ReadUserDto} from "./dto/read-user.dto";
 
 @Injectable()
 export class UsersService {
@@ -48,10 +48,10 @@ export class UsersService {
         }
     }
 
-    async findAll(): Promise<ReadUserNoPwDto[]> {
+    async findAll(): Promise<ReadUserDto[]> {
 
         try {
-            return this.classMapper.mapArrayAsync(await this.userRepository.find({relations: ['tasks']}), User, ReadUserNoPwDto)
+            return this.classMapper.mapArrayAsync(await this.userRepository.find({relations: ['tasks']}), User, ReadUserDto)
         } catch (ex) {
             throw new Error(`error: ${ex.message}.`);
         }
@@ -62,7 +62,7 @@ export class UsersService {
         let user: any
         user = await this.userRepository.findOne({
             where: {
-                username : name
+                username: name
             },
             relations: ['tasks']
         })
@@ -92,7 +92,6 @@ export class UsersService {
     async findOne(value: object): Promise<User> {
 
         return await this.userRepository.findOne(value);
-
     }
 
     async findByPayload(username: any): Promise<User> {

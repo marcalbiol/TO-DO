@@ -1,23 +1,14 @@
 // validations
 
-import { AutoMap } from '@automapper/classes';
-import { Task } from '../../tasks/entities/task.entity';
+import {AutoMap} from '@automapper/classes';
 
 export class ReadUserDto {
-  @AutoMap()
-  id?: number;
 
-  @AutoMap()
-  username?: string;
+    @AutoMap()
+    id?: number;
 
-  @AutoMap()
-  task?: Task[];
+    @AutoMap()
+    username?: string;
+
 }
 
-export class ReadUserNoPwDto {
-  @AutoMap()
-  username: string;
-
-  @AutoMap()
-  task: Task[];
-}

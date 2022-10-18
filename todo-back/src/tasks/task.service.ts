@@ -5,6 +5,9 @@ import {Task} from './entities/task.entity';
 import {Repository} from 'typeorm';
 import {User} from 'src/users/entities/user.entity';
 import {CreateTaskDto} from './dto/create-task.dto';
+import {InjectMapper} from "@automapper/nestjs";
+import {Mapper} from "@automapper/core";
+import {ReadTaskDto} from "./dto/read-task.dto";
 
 @Injectable()
 export class TaskService {
@@ -13,46 +16,40 @@ export class TaskService {
         private taskRepository: Repository<Task>,
         @InjectRepository(User)
         private userRepository: Repository<User>,
+        @InjectMapper()
+        private readonly classMapper: Mapper
     ) {
     }
 
     async create(task: CreateTaskDto, userId: number): Promise<Task> {
+
         task.user = userId;
         return await this.taskRepository.save(task);
     }
 
-    async findTask(id: number): Promise<Task> {
-        let task: any;
-        //TODO DTOS TASK
-        //TODO CREAR METODO
-        task = await this.taskRepository.find({
+    async findTask(id: number): Promise<ReadTaskDto[]> {
+        //TODO controlar si es null
+        return await this.classMapper.mapArrayAsync(await this.taskRepository.find({
             relations: ['user'],
             where: {user: {id: id}},
-        });
-        if (!task) throw new NotFoundException('task no encontrada');
-
-        return task;
+        }), Task, ReadTaskDto)
     }
 
+
+
     async update(id: number, task: UpdateTaskDto) {
-        let taskExists: any;
-        taskExists = await this.taskRepository.findOne({
-            where: {
-                id: id,
-            },
-        });
-        if (!taskExists) throw new NotFoundException('task no encontrada');
+
         return await this.taskRepository.update(id, task);
     }
 
     async remove(id: number) {
-        //FIXME funciona pero se queda colgado el postman
+        
         return await this.taskRepository.delete(id);
     }
 
     fillData(cuenta: Task[]) {
         this.taskRepository.save(cuenta);
-    }
+    }   
 
     //TODO
     private handleError(error: any) {

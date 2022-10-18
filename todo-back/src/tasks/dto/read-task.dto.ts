@@ -1,12 +1,16 @@
-import { AutoMap } from '@automapper/classes';
+import {AutoMap} from '@automapper/classes';
+
 
 export class ReadTaskDto {
-  @AutoMap()
-  id!: number;
 
-  @AutoMap()
-  description!: string;
+    @AutoMap()
+    readonly id!: number;
 
-  @AutoMap()
-  userId!: number;
+    @AutoMap()
+    readonly description!: string;
+
+    @AutoMap()
+    readonly createAt: Date;
+
+
 }

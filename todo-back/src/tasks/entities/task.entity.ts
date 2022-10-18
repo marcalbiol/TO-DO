@@ -19,6 +19,8 @@ export class Task {
     @ManyToOne(() => User, (user) => user.tasks, {onDelete: 'CASCADE'})
     user: User | number | string;
 
+
+    //TODO modificar tiempo
     @AutoMap()
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
     createAt?: Date;

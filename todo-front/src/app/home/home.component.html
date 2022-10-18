@@ -72,33 +72,43 @@
       <div class="card-body">
         <h5 class="card-title">Listado de tareas</h5>
         <!--
-        <div *ngIf="clientes?.length == 0" class="alert alert-info">
-          No hay registros *ngIf="clientes?.length>0"
+        <div *ngIf="tasks?.length == 0" class="alert alert-info">
+          No hay registros *ngIf="tasks?.length>0"
         </div>
         -->
         <div>
           <table class="table table-bordered table-striped">
             <thead>
             <tr>
+              <th></th>
               <th>#</th>
               <th>Task</th>
               <th>Categoria</th>
               <th>Fecha</th>
+              <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let taskInfo of userData.task">
+            <tr *ngFor="let tasks of tasks.tasks">
               <td>
-                {{taskInfo.id}}
+                <input name="{{tasks.id}}" type="radio">
               </td>
               <td>
-                {{taskInfo.description}}
+                {{tasks.id}}
+              </td>
+              <td>
+                {{tasks.description}}
               </td>
               <td>
                 categoria
               </td>
               <td>
-                fecha
+                {{tasks.createAt}}
+              </td>
+              <td>
+                <button (click)="homeService.deleteTask(tasks.id)" class="btn btn-danger" style="color: black"
+                        type="button">Eliminar
+                </button>
               </td>
             </tr>
             </tbody>

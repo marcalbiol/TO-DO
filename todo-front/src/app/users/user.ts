@@ -1,11 +1,10 @@
-import {List} from "postcss/lib/list";
-
 export class User {
 
   id!: number;
-  public _username!: string;
   password!: string
   task!: Array<Task>
+
+  public _username!: string;
 
   get username(): string {
     return this._username;
@@ -19,5 +18,6 @@ export class User {
 export class Task {
   id!: number;
   description!: number
+  createAt!: Date
 
 }

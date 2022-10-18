@@ -9,7 +9,6 @@ export class TaskController {
     constructor(private readonly taskService: TaskService) {
     }
 
-
     @Get('/:userId')
     async get(@Param('userId') id: number, @Res() response) {
         let tasks = await this.taskService.findTask(id);
@@ -24,13 +23,12 @@ export class TaskController {
     }
 
 
-
     @Patch('/update/:taskId')
     async update(@Body() task: UpdateTaskDto, @Param('taskId') taskId: number,
-                    @Res() response) {
+                 @Res() response) {
         let taskUpdated = await this.taskService.update(taskId, task);
 
-        if(taskUpdated.affected == 0) {
+        if (taskUpdated.affected == 0) {
             return response.status(HttpStatus.NOT_FOUND).json("Tarea no encontrada");
         }
         return response.status(HttpStatus.OK).json("Tarea actualizada");
@@ -41,12 +39,10 @@ export class TaskController {
 
         let taskRemoved = await this.taskService.remove(id);
 
-        if(taskRemoved.affected == 0) {
+        if (taskRemoved.affected == 0) {
             return response.status(HttpStatus.NOT_FOUND).json("Tarea no encontrada");
         }
         return response.status(HttpStatus.OK).json("Tarea eliminada");
-
-        //TODO response
     }
 
 }

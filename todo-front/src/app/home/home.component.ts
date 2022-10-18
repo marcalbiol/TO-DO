@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
-import { HomeService } from './home.service';
-import { User } from '../users/user';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../auth/auth.service';
+import {HomeService} from './home.service';
+import {User} from '../users/user';
+import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,14 +12,16 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent implements OnInit {
   userData!: User;
+  tasks!: any;
   token!: any;
-  data!: any;
+  userId!: number;
 
   constructor(
     public authService: AuthService,
-    private homeService: HomeService,
+    public homeService: HomeService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   //TODO EDITAR HOME HTML
   //TODO CREAR TABLA CON LAS TAREAS
@@ -28,8 +30,13 @@ export class HomeComponent implements OnInit {
     this.token = sessionStorage.getItem('user');
 
     this.homeService.getUser(this.token).then((res) => {
-      console.log(JSON.stringify(res));
       this.userData = res.user;
+      this.userId = res.user.id; // obetenemos el id del usuario para recoger las tareas asociadas
+
+      this.homeService.getTasks(this.userId).then((res) => {
+        this.tasks = res;
+        console.log(this.tasks)
+      })
     });
 
     if (this.token == null) {
@@ -42,6 +49,4 @@ export class HomeComponent implements OnInit {
       this.router.navigateByUrl('/');
     }
   }
-
-  // METODOS
 }

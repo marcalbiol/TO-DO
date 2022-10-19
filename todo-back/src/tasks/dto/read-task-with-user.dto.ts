@@ -6,5 +6,5 @@ export class ReadTaskWithUserDto extends ReadTaskDto {
 
     @AutoMap()
     user!: User[] | number;
-    
+
 }

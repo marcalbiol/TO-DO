@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   tasks!: any;
   token!: any;
   userId!: number;
+  newTaskName!: any;
+  routerLink: string = '/home';
 
   constructor(
     public authService: AuthService,
@@ -23,20 +25,14 @@ export class HomeComponent implements OnInit {
   ) {
   }
 
-  //TODO EDITAR HOME HTML
-  //TODO CREAR TABLA CON LAS TAREAS
-
   ngOnInit() {
     this.token = sessionStorage.getItem('user');
-
     this.homeService.getUser(this.token).then((res) => {
       this.userData = res.user;
       this.userId = res.user.id; // obetenemos el id del usuario para recoger las tareas asociadas
 
-      this.homeService.getTasks(this.userId).then((res) => {
-        this.tasks = res;
-        console.log(this.tasks)
-      })
+      // todas las tareas
+      this.getAllTasks(this.userId)
     });
 
     if (this.token == null) {
@@ -46,7 +42,30 @@ export class HomeComponent implements OnInit {
         text: 'Necesitas estar logeado',
       });
       // reedirect al login
-      this.router.navigateByUrl('/');
+    }
+  }
+
+  getAllTasks(userId: number) {
+    this.homeService.getTasks(userId).then((res) => {
+      this.tasks = res
+    })
+  }
+
+  updateTask(event: any, value: string, taskId: number) {
+    if (event.keyCode == 13) {
+      this.homeService.updateTask(value, taskId).then(() => {
+      })
+    }
+  }
+
+  insertNewTask(event: any) {
+    if (event.keyCode == 13) {
+      // pasamos los parametros para crear la tarea
+      this.homeService.createTask(this.newTaskName, this.userId).then(r => {
+        this.router.navigate(['/']).then(() => {
+          this.router.navigate([this.routerLink]);
+        })
+      });
     }
   }
 }

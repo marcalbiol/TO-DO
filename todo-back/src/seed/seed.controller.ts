@@ -1,19 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from "@nestjs/common";
-import { SeedService } from "./seed.service";
+import {Controller, Get} from "@nestjs/common";
+import {SeedService} from "./seed.service";
 
 @Controller("seed")
 export class SeedController {
-  constructor(private readonly seedService: SeedService) {
-  }
+    constructor(private readonly seedService: SeedService) {
+    }
 
 
-  @Get("/users")
-  fillUsers() {
-    return this.seedService.fillDataUsers();
-  }
+    @Get("/users")
+    fillUsers() {
+        return this.seedService.fillDataUsers();
+    }
 
-  @Get("/tareas")
-  fillTasks() {
-    return this.seedService.fillDataTasks();
-  }
+    @Get("/tareas")
+    fillTasks() {
+        return this.seedService.fillDataTasks();
+    }
 }

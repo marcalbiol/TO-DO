@@ -3,7 +3,6 @@ import {UsersService} from "../users/users.service";
 import * as bcrypt from "bcrypt";
 import {User} from "../users/entities/user.entity";
 import {JwtService} from "@nestjs/jwt";
-import {CreateUserDto} from "../users/dto/create-user.dto";
 import {JwtPayload} from "./jwt.payload";
 
 
@@ -33,7 +32,7 @@ export class AuthService {
 
     async generateAccessToken(username: string) {
         const user = await this.userService.findOne({where: {username}});
-        const payload: JwtPayload = { userId: user.id };
+        const payload: JwtPayload = {userId: user.id};
         return {
             access_token: this.jwtService.sign(payload),
         };

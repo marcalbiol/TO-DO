@@ -2,14 +2,17 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../users/user';
 import {AuthService} from '../auth/auth.service';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HomeService {
+  routerLink: string = '/home';
   private urlEndPoint: string = 'http://localhost:3000';
 
-  constructor(private http: HttpClient, private authService: AuthService) {
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router,) {
+
   }
 
   async getUser(username: string): Promise<any> {
@@ -23,11 +26,26 @@ export class HomeService {
   }
 
   async deleteTask(taskId: number) {
-    console.log(taskId)
     return this.http.delete(this.urlEndPoint + "/tasks/delete/" + taskId).subscribe(res => {
-      console.log(res)
+      console.log("Tarea eliminada")
     });
   }
+
+
+  async createTask(description: object, userId: number) {
+    return this.http.post(this.urlEndPoint + "/tasks/create/" + userId, {description}).subscribe(() => {
+      console.log("Tarea creada");
+    })
+  }
+
+  async updateTask(description: string, taskId: number) {
+    return this.http.patch(this.urlEndPoint + "/tasks/update/" + taskId, {description}).subscribe(() => {
+      console.log("Tarea actualizada")
+
+
+    })
+  }
+
 
   //TODO implementar metodo crear nueva tarea autenticansdo el jwt
 

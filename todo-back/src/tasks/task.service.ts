@@ -1,4 +1,4 @@
-import {Injectable, NotFoundException,} from '@nestjs/common';
+import {Injectable,} from '@nestjs/common';
 import {InjectRepository} from '@nestjs/typeorm';
 import {UpdateTaskDto} from './dto/update-task.dto';
 import {Task} from './entities/task.entity';
@@ -36,20 +36,19 @@ export class TaskService {
     }
 
 
-
     async update(id: number, task: UpdateTaskDto) {
 
         return await this.taskRepository.update(id, task);
     }
 
     async remove(id: number) {
-        
+
         return await this.taskRepository.delete(id);
     }
 
     fillData(cuenta: Task[]) {
         this.taskRepository.save(cuenta);
-    }   
+    }
 
     //TODO
     private handleError(error: any) {

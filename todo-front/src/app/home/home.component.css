@@ -1,4 +1,5 @@
 html {
+  background-color: #181a1b;
 }
 
 body {
@@ -20,6 +21,13 @@ body {
 
 #table {
   flex: 1 0 auto;
-  height: 100%;
-  border: 3px solid green;
+}
+
+
+#text {
+  background-color: whitesmoke;
+  color: black;
+  position: absolute;
+  bottom: 0;
+  width: 75.22em;
 }

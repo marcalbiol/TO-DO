@@ -8,8 +8,8 @@ import {Router} from '@angular/router';
   providedIn: 'root',
 })
 export class HomeService {
-  routerLink: string = '/home';
   private urlEndPoint: string = 'http://localhost:3000';
+  userId!: number;
 
   constructor(private http: HttpClient, private authService: AuthService, private router: Router,) {
 
@@ -22,6 +22,7 @@ export class HomeService {
   }
 
   async getTasks(userId: number): Promise<any> {
+    this.userId = userId;
     return await this.http.get<Task[]>(this.urlEndPoint + "/tasks/" + userId).toPromise();
   }
 
@@ -30,7 +31,6 @@ export class HomeService {
       console.log("Tarea eliminada")
     });
   }
-
 
   async createTask(description: object, userId: number) {
     return this.http.post(this.urlEndPoint + "/tasks/create/" + userId, {description}).subscribe(() => {
@@ -41,13 +41,8 @@ export class HomeService {
   async updateTask(description: string, taskId: number) {
     return this.http.patch(this.urlEndPoint + "/tasks/update/" + taskId, {description}).subscribe(() => {
       console.log("Tarea actualizada")
-
-
     })
   }
 
-
   //TODO implementar metodo crear nueva tarea autenticansdo el jwt
-
-  // METODO BORRAR Y EDITAR
 }

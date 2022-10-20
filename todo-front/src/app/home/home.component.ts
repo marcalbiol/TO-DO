@@ -51,21 +51,30 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  deleteTask(taskId: number){
+    this.homeService.deleteTask(taskId).then(() => {
+
+      this.ngOnInit()
+    })
+  }
+
   updateTask(event: any, value: string, taskId: number) {
     if (event.keyCode == 13) {
       this.homeService.updateTask(value, taskId).then(() => {
+
+        this.ngOnInit()
       })
     }
   }
 
-  insertNewTask(event: any) {
+  async insertNewTask(event: any) {
     if (event.keyCode == 13) {
       // pasamos los parametros para crear la tarea
       this.homeService.createTask(this.newTaskName, this.userId).then(r => {
-        this.router.navigate(['/']).then(() => {
-          this.router.navigate([this.routerLink]);
-        })
+
+       this.ngOnInit()
       });
     }
   }
+
 }

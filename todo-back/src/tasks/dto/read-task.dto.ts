@@ -12,5 +12,6 @@ export class ReadTaskDto {
     @AutoMap()
     readonly createAt: Date;
 
-
+    @AutoMap()
+    readonly isDone: boolean
 }

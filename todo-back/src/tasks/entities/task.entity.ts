@@ -3,6 +3,7 @@ import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
 import {User} from '../../users/entities/user.entity';
 import {AutoMap} from '@automapper/classes';
 
+
 @Injectable()
 @Entity()
 export class Task {
@@ -25,5 +26,8 @@ export class Task {
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
     createAt?: Date;
 
+    @AutoMap()
+    @Column({default: false})
+    isDone: boolean;
 
 }

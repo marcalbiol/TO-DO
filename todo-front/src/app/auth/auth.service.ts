@@ -54,5 +54,6 @@ export class AuthService {
   register(user: { password: string; username: string }): Observable<any> {
 
     return this.http.post<User>(this.urlEndPoint + "/users", user);
+    //TODO redirect to login page
   }
 }

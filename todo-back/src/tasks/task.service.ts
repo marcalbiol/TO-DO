@@ -28,6 +28,7 @@ export class TaskService {
     }
 
     async findTask(id: number): Promise<ReadTaskDto[]> {
+
         //TODO controlar si es null
         return await this.classMapper.mapArrayAsync(await this.taskRepository.find({
             relations: ['user'],
@@ -35,6 +36,16 @@ export class TaskService {
         }), Task, ReadTaskDto)
     }
 
+    async completeTask(id: number){
+
+        const taskFromDb = await this.taskRepository.findOne({
+            where: {id}
+        })
+
+        taskFromDb.isDone = taskFromDb.isDone != true;
+
+        return this.taskRepository.save(taskFromDb)
+    }
 
     async update(id: number, task: UpdateTaskDto) {
 
@@ -47,6 +58,7 @@ export class TaskService {
     }
 
     fillData(cuenta: Task[]) {
+
         this.taskRepository.save(cuenta);
     }
 

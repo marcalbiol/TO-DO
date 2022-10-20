@@ -51,8 +51,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  deleteTask(taskId: number){
-    this.homeService.deleteTask(taskId).then(() => {
+  async deleteTask(taskId: number){
+    await this.homeService.deleteTask(taskId).then(() => {
 
       this.ngOnInit()
     })
@@ -67,6 +67,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  //TODO resetear campo al escribir nueva tarea
   async insertNewTask(event: any) {
     if (event.keyCode == 13) {
       // pasamos los parametros para crear la tarea
@@ -75,6 +76,13 @@ export class HomeComponent implements OnInit {
        this.ngOnInit()
       });
     }
+  }
+
+  async changeStatus(taskId: number){
+     await this.homeService.changeStatus(taskId).then(() => {
+
+      this.ngOnInit()
+    })
   }
 
 }

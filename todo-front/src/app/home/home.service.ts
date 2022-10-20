@@ -44,5 +44,10 @@ export class HomeService {
     })
   }
 
+  async changeStatus(taskId: number){
+    return this.http.get(this.urlEndPoint + "/tasks/updateCompleted/" + taskId).subscribe(() => {
+      console.log("Status cambiado")
+    })
+  }
   //TODO implementar metodo crear nueva tarea autenticansdo el jwt
 }

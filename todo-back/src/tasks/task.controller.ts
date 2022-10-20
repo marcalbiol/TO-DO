@@ -22,6 +22,12 @@ export class TaskController {
         return response.status(HttpStatus.OK).json({tasks});
     }
 
+    @Get('/updateCompleted/:taskId')
+    async completeTask(@Param('taskId') taskId: number, @Res() response){
+
+        await this.taskService.completeTask(taskId);
+        return response.status(HttpStatus.OK).json("Tarea actualizada");
+    }
 
     @Patch('/update/:taskId')
     async update(@Body() task: UpdateTaskDto, @Param('taskId') taskId: number,

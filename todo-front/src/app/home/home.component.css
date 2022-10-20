@@ -30,3 +30,7 @@ body {
   position: absolute;
   width: 75.22em;
 }
+
+.tachado{
+  text-decoration: line-through;
+}

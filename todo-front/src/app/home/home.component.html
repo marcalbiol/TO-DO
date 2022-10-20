@@ -76,11 +76,8 @@
         </div>
         <div class="card-body">
           <h5 class="card-title">Listado de tareas</h5>
-          <!--
-          <div *ngIf="tasks?.length == 0" class="alert alert-info">
-            No hay registros *ngIf="tasks?.length>0"
-          </div>
-          -->
+
+
           <div>
             <table class="table table-bordered table-striped">
               <thead>
@@ -91,14 +88,13 @@
                 <th></th>
               </tr>
               </thead>
-              <tbody>
-              <tr *ngFor="let tasks of tasks['tasks']">
+              <tbody *ngFor="let tasks of tasks['tasks']">
+              <tr *ngIf="tasks.isDone == false" >
                 <td>
-                  {{tasks.id}}
-                  <input name="{{tasks.id}}" type="radio">
+                  <input (click)="changeStatus(tasks.id)" type="radio">
                 </td>
                 <td>
-                  <input (keyup)="updateTask($event, tasks.description, tasks.id)" [(ngModel)]="tasks.description"
+                  <input  (keyup)="updateTask($event, tasks.description, tasks.id)" [(ngModel)]="tasks.description"
                          type="text">
                 </td>
                 <td>
@@ -113,6 +109,39 @@
               </tbody>
             </table>
           </div>
+
+          <div>
+            Tareas completadas
+            <table class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th></th>
+                <th>Task</th>
+                <th>Fecha</th>
+              </tr>
+              </thead>
+              <tbody *ngFor="let tasks of tasks['tasks']">
+              <tr *ngIf="tasks.isDone == true" >
+                <td>
+                  <input (click)="changeStatus(tasks.id)" type="radio">
+                </td>
+                <td>
+                  <input class="tachado" (keyup)="updateTask($event, tasks.description, tasks.id)" [(ngModel)]="tasks.description"
+                         type="text">
+                </td>
+                <td>
+                  {{tasks.createAt | date}}
+                </td>
+                <td>
+                  <button (click)="deleteTask(tasks.id)" class="btn btn-danger" style="color: black"
+                          type="button">Eliminar
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
         </div>
       </div>
 

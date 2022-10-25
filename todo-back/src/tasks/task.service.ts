@@ -22,7 +22,6 @@ export class TaskService {
     }
 
     async create(task: CreateTaskDto, userId: number): Promise<Task> {
-
         task.user = userId;
         return await this.taskRepository.save(task);
     }

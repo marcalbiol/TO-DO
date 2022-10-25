@@ -2,6 +2,7 @@ import {Injectable} from '@nestjs/common';
 import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
 import {User} from '../../users/entities/user.entity';
 import {AutoMap} from '@automapper/classes';
+import {Category} from "../../category/entities/category.entity";
 
 
 @Injectable()
@@ -19,6 +20,9 @@ export class Task {
     @AutoMap()
     @ManyToOne(() => User, (user) => user.tasks, {onDelete: 'CASCADE'})
     user: User | number | string;
+
+    @ManyToOne(() => Category, (category) => category.id, {onDelete: 'CASCADE'})
+    category: Category | number | string;
 
 
     //TODO modificar tiempo

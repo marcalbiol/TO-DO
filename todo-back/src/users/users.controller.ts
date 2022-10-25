@@ -54,8 +54,7 @@ export class UsersController {
         });
     }
 
-    //FIXME
-    @Get('id/:id') // by Id
+    @Get('/:id') // by Id
     async findById(@Res() response, @Param('id') value: number) {
         const user = await this.usersService.findOneById(value);
         return response.status(HttpStatus.OK).json({

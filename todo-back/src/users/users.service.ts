@@ -64,7 +64,7 @@ export class UsersService {
             where: {
                 username: name
             },
-            relations: ['tasks']
+            relations: ['category']
         })
         if (!user) throw new NotFoundException("Usuario no encontrado");
         return this.classMapper.mapAsync(await user, User, ReadUserDto);
@@ -72,7 +72,7 @@ export class UsersService {
 
 
     // TODO buscar id y nombre en la misma funcion, depende de si es number o no.
-    async findOneById(value: number) {
+    async findOneById(value: number){
 
         let user: any
         // id
@@ -81,12 +81,13 @@ export class UsersService {
                     where: {
                         id: value
                     },
-                    relations: ['tasks']
+                    relations: ['categories']
+                //TODO DTO
                 }
             );
         }
         if (!user) throw new NotFoundException("Usuario no encontrado");
-        return this.classMapper.mapAsync(await user, User, ReadUserDto);
+        return user
     }
 
     async findOne(value: object): Promise<User> {

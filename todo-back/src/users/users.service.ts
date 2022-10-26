@@ -64,7 +64,7 @@ export class UsersService {
             where: {
                 username: name
             },
-            relations: ['category']
+            relations: ['categories']
         })
         if (!user) throw new NotFoundException("Usuario no encontrado");
         return this.classMapper.mapAsync(await user, User, ReadUserDto);
@@ -82,12 +82,11 @@ export class UsersService {
                         id: value
                     },
                     relations: ['categories']
-                //TODO DTO
                 }
             );
         }
         if (!user) throw new NotFoundException("Usuario no encontrado");
-        return user
+        return this.classMapper.mapAsync(await user, User, ReadUserDto);
     }
 
     async findOne(value: object): Promise<User> {

@@ -11,6 +11,16 @@ export class CategoryController {
     constructor(private readonly categoryService: CategoryService) {
     }
 
+
+    @Get("/:id")
+    async getTasks(@Param("id") id: number, @Res() response){
+
+        const categoryWithTasks = await this.categoryService.findOneById(id);
+        return response.status(HttpStatus.OK).json({
+            categoryWithTasks,
+        });
+    }
+
     @Post("/create/:userId")
     async create(@Body() category: CreateCategoryDto, @Param('userId') id: number,
                  @Res() response): Promise<Category> {

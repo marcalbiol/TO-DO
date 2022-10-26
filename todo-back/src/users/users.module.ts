@@ -5,12 +5,12 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import {User} from "./entities/user.entity";
 import {AutomapperModule} from "@automapper/nestjs";
 import {PassportModule} from "@nestjs/passport";
-import {UserProfile} from "../profile/user-profile";
+import {MapperProfile} from "../profile/mapper-profile";
 
 @Module({
     imports: [TypeOrmModule.forFeature([User]), AutomapperModule, PassportModule],
     controllers: [UsersController],
-    providers: [UsersService, UserProfile],
+    providers: [UsersService, MapperProfile],
     exports: [UsersService, UsersModule, TypeOrmModule.forFeature([User])]
 })
 export class UsersModule {

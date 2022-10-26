@@ -8,19 +8,24 @@ import {AutoMap} from "@automapper/classes";
 @Injectable()
 export class Category {
 
+    @AutoMap()
     @PrimaryGeneratedColumn()
     id?: number;
 
+    @AutoMap()
     @Column()
     name?: string;
 
+    @AutoMap()
     @ManyToOne(() => User, (user) => user.categories, {onDelete: 'CASCADE'})
     user: User | number | string;
 
-    @OneToMany(() => Task, (task) => task.id, {
+    @AutoMap()
+    @OneToMany(() => Task, (task) => task.category, {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
     })
     tasks?: Task[];
+
 
 }

@@ -1,4 +1,4 @@
-import {Injectable} from '@nestjs/common';
+import {Injectable, NotFoundException} from '@nestjs/common';
 import {CreateCategoryDto} from './dto/create-category.dto';
 import {UpdateCategoryDto} from './dto/update-category.dto';
 import {Category} from "./entities/category.entity";
@@ -6,6 +6,12 @@ import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import {CreateTaskDto} from "../tasks/dto/create-task.dto";
 import {Task} from "../tasks/entities/task.entity";
+import {User} from "../users/entities/user.entity";
+import {ReadUserDto} from "../users/dto/read-user.dto";
+import {InjectMapper} from "@automapper/nestjs";
+import {Mapper} from "@automapper/core";
+import {CategoryController} from "./category.controller";
+import {ReadCategoryDto} from "./dto/read-category.dto";
 
 @Injectable()
 export class CategoryService {
@@ -13,7 +19,9 @@ export class CategoryService {
         @InjectRepository(Category)
         private categoryRepository: Repository<Category>,
         @InjectRepository(Task)
-        private taskRepository: Repository<Task>
+        private taskRepository: Repository<Task>,
+        @InjectMapper()
+        private readonly classMapper: Mapper
     ) {
     }
 
@@ -22,8 +30,24 @@ export class CategoryService {
         return this.categoryRepository.save(createCategoryDto);
     }
 
-    async findCategory(id: number): Promise<boolean> {
-        console.log(id + "id de findcaT")
+    async findOneById(value: number){
+
+        let category: any
+        if (!isNaN(value)) {
+            category = await this.categoryRepository.findOne({
+                    where: {
+                        id: value
+                    },
+                    relations: ['tasks']
+                }
+            );
+        }
+        if (!category) throw new NotFoundException("Categoria no encontrada");
+        return await category
+    }
+
+
+    async findIfCategoryExists(id: number): Promise<boolean> {
         let bool;
         bool = await this.categoryRepository.findOne({
             where: {
@@ -38,7 +62,7 @@ export class CategoryService {
     async newTask(task: CreateTaskDto, catId: number): Promise<Task> {
         const categoryId = catId;
 
-        let categoryExists = await this.findCategory(categoryId)
+        let categoryExists = await this.findIfCategoryExists(categoryId)
 
         if (categoryExists) {
             task.category = categoryId

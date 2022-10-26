@@ -27,6 +27,7 @@ export class User {
     tasks?: Task[];
 
 
+    @AutoMap()
     @OneToMany(() => Category, (category) => category.user, {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',

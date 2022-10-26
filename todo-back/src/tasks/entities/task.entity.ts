@@ -21,7 +21,8 @@ export class Task {
     @ManyToOne(() => User, (user) => user.tasks, {onDelete: 'CASCADE'})
     user: User | number | string;
 
-    @ManyToOne(() => Category, (category) => category.id, {onDelete: 'CASCADE'})
+    @AutoMap()
+    @ManyToOne(() => Category, (category) => category.tasks, {onDelete: 'CASCADE'})
     category: Category | number | string;
 
 

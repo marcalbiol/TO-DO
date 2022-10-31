@@ -6,12 +6,8 @@ import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import {CreateTaskDto} from "../tasks/dto/create-task.dto";
 import {Task} from "../tasks/entities/task.entity";
-import {User} from "../users/entities/user.entity";
-import {ReadUserDto} from "../users/dto/read-user.dto";
 import {InjectMapper} from "@automapper/nestjs";
 import {Mapper} from "@automapper/core";
-import {CategoryController} from "./category.controller";
-import {ReadCategoryDto} from "./dto/read-category.dto";
 
 @Injectable()
 export class CategoryService {
@@ -30,7 +26,7 @@ export class CategoryService {
         return this.categoryRepository.save(createCategoryDto);
     }
 
-    async findOneById(value: number){
+    async findOneById(value: number) {
 
         let category: any
         if (!isNaN(value)) {

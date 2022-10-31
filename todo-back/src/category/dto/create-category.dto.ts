@@ -1,6 +1,6 @@
 import {Category} from "../entities/category.entity";
 
-export class CreateCategoryDto extends Category{
+export class CreateCategoryDto extends Category {
 
     name?: string;
 }

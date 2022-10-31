@@ -1,20 +1,29 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" routerLink="/home" routerLinkActive="active">To-do App</a>
+      <a class="navbar-brand" href="#">{{title}}</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a routerLink="/home" routerLinkActive="active">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/home" aria-current="page" href="#">Home</a>
+      </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a *ngIf="!authService.logIn" href="#" routerLink="" routerLinkActive="active"><span
-        class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a *ngIf="!authService.logIn" href="#" routerLink="/login" routerLinkActive="active"><span
-        class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li><a (click)="authService.logout()" *ngIf="authService.logIn" href="#"><span
-        class="glyphicon glyphicon-user"></span> Logout</a></li>
+    <ul>
+      <li>
+        <a class="nav-link active" routerLink="/home" aria-current="page" href="#">Home</a>
+
+      </li>
     </ul>
+
+    <div class="btn-group">
+      <li class="nav-item"><a class="btn btn-primary active" *ngIf="!authService.logIn" href="#" routerLink=""
+                              routerLinkActive="active">Sign Up</a></li>
+      <li class="nav-item"><a class="btn btn-primary active" *ngIf="!authService.logIn" href="#" routerLink="/login"
+                              routerLinkActive="active">Login</a></li>
+      <li class="nav-item"><a class="btn btn-primary active" (click)="authService.logout()" *ngIf="authService.logIn"
+                              href="#">Logout</a></li>
+
+    </div>
   </div>
 </nav>
+

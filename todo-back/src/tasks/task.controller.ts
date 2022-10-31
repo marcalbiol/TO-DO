@@ -9,8 +9,8 @@ export class TaskController {
     constructor(private readonly taskService: TaskService) {
     }
 
-    @Get('/:userId')
-    async get(@Param('userId') id: number, @Res() response) {
+    @Get('/:categoryId')
+    async get(@Param('categoryId') id: number, @Res() response) {
         let tasks = await this.taskService.findTask(id);
         return response.status(HttpStatus.OK).json({tasks});
     }
@@ -23,7 +23,7 @@ export class TaskController {
     }
 
     @Get('/updateCompleted/:taskId')
-    async completeTask(@Param('taskId') taskId: number, @Res() response){
+    async completeTask(@Param('taskId') taskId: number, @Res() response) {
 
         await this.taskService.completeTask(taskId);
         return response.status(HttpStatus.OK).json("Tarea actualizada");

@@ -1,155 +1,100 @@
 <body *ngIf="authService.logIn" class="font-poppins antialiased">
-<div
-  class="h-full w-screen flex flex-row"
-  id="view"
-  style="font-size: 2rem" x-data="{ sidenav: true }"
->
-  <button
-    class="p-2 border-2 bg-white rounded-md border-gray-200 shadow-lg text-gray-500 focus:bg-teal-500 focus:outline-none focus:text-white absolute top-0 left-0 sm:hidden"
-  >
-    <svg
-      class="w-5 h-5 fill-current"
-      fill="currentColor"
-      viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        clip-rule="evenodd"
-        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-        fill-rule="evenodd"
-      ></path>
-    </svg>
-  </button>
-  <div
-    class="bg-white h-screen md:block shadow-xl px-3 w-30 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out"
-    id="sidebar"
-    x-show="sidenav"
-  >
-    <div class="space-y-6 md:space-y-10 mt-10">
-      <h1 class="md:block font-bold text-sm md:text-xl text-center">
-        titulo<span class="text-teal-600">.</span>
-      </h1>
+<div id="content">
+<div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; background-color: #212121">
+  <a *ngIf="categories" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    Categorias
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto" *ngFor="let cate of categories">
+    <li>
+      <a style="cursor:pointer;" (click)="getTasks(cate.id)" class="nav-link text-white" aria-current="page">
+        &#x27a1;&#xfe0f;{{cate.name}}</a>
+    </li>
+    </ul>
+  <input class="noBorder" (keyup)="insertNewCategory($event)" [(ngModel)]="newCategory" id="category" placeholder="+ Nueva categoria"
+         style="margin-top: 16rem;"
+         type="text">
 
-      <div class="space-y-3" id="profile">
-        <!--
-        <img
-          src="https://pbs.twimg.com/profile_images/1467997254929854470/mDYbXoVl_400x400.jpg"
-          alt="Avatar user"
-          class="w-10 md:w-16 rounded-full mx-auto"
-        />
-        -->
-        <div *ngIf="userData">
-          Hola, {{userData.username | titlecase}}  , aun tienes tareas pendientes
-        </div>
-        <div>
-        </div>
-
-      </div>
-      <button
-        class="rounded-tr-md rounded-br-md px-2 py-3 hidden md:block"
-      >
-        <svg
-          class="w-4 h-4 fill-current"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            clip-rule="evenodd"
-            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-            fill-rule="evenodd"
-          ></path>
-        </svg>
-      </button>
-    </div>
-    <div class="flex flex-col space-y-2" id="menu">
-      <span class="">Categorias</span>
-    </div>
+  <!--TODO MODIFICAR MENU USUARIO-->
+  <hr>
+  <div class="dropdown">
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2 ">
+      <strong>mdo</strong>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+      <li><a class="dropdown-item" href="#">New project...</a></li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Sign out</a></li>
+    </ul>
   </div>
-
-  <div class="container">
-    <div id="table">
-      <div class="card mb-3 mt-4">
-        <div class="inputText">
-          <input (keyup)="insertNewTask($event)" [(ngModel)]="newTaskName" id="text" placeholder="Añadir tarea"
-                 type="text">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Listado de tareas</h5>
-
-
-          <div>
-            <table class="table table-bordered table-striped">
-              <thead>
-              <tr>
-                <th></th>
-                <th>Task</th>
-                <th>Fecha</th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody *ngFor="let tasks of tasks['tasks']">
-              <tr *ngIf="tasks.isDone == false" >
-                <td>
-                  <input (click)="changeStatus(tasks.id)" type="radio">
-                </td>
-                <td>
-                  <input  (keyup)="updateTask($event, tasks.description, tasks.id)" [(ngModel)]="tasks.description"
-                         type="text">
-                </td>
-                <td>
-                  {{tasks.createAt | date}}
-                </td>
-                <td>
-                  <button (click)="deleteTask(tasks.id)" class="btn btn-danger" style="color: black"
-                          type="button">Eliminar
-                  </button>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div>
-            Tareas completadas
-            <table class="table table-bordered table-striped">
-              <thead>
-              <tr>
-                <th></th>
-                <th>Task</th>
-                <th>Fecha</th>
-
-              </tr>
-              </thead>
-              <tbody *ngFor="let tasks of tasks['tasks']">
-              <tr *ngIf="tasks.isDone == true" >
-                <td>
-                  <input (click)="changeStatus(tasks.id)" type="radio">
-                </td>
-                <td>
-                  <input class="tachado" (keyup)="updateTask($event, tasks.description, tasks.id)" [(ngModel)]="tasks.description"
-                         type="text">
-                </td>
-                <td>
-                  {{tasks.createAt | date}}
-                </td>
-                <td>
-                  <button (click)="deleteTask(tasks.id)" class="btn btn-danger" style="color: black"
-                          type="button">Eliminar
-                  </button>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-
 </div>
+
+<div *ngIf="categoryId" class="container" id="tables">
+  <!-- mensaje de que aun no tiene categoria seleccionada -->
+  <h4 style="margin-bottom: 1rem; margin-top: 1rem" class="card-title mb-3.5">Listado de tareas</h4>
+
+    <input class="newTask" (keyup)="insertNewTask($event)" [(ngModel)]="newTask" id="text" placeholder="+Añadir nueva tarea..."
+           type="text">
+  <table id="table" class="table table-dark mt-12">
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Tarea</th>
+      <th scope="col">Fecha</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let tasks of tasks['tasks']">
+    <tr *ngIf="tasks.isDone == false">
+      <td><input class="checkbox" (click)="changeStatus(tasks.id)" type="checkbox"></td>
+      <td>
+        <input class="noBorder" (keyup)="updateTask($event, tasks.description, tasks.id)" [(ngModel)]="tasks.description"
+               type="text">
+      </td>
+      <td>
+        {{tasks.createAt | date}}
+      </td>
+      <td>
+        <button (click)="deleteTask(tasks.id)" class="btn btn-danger"
+                type="button">Eliminar
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Tarea</th>
+      <th scope="col">Fecha</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let tasks of tasks['tasks']">
+    <tr *ngIf="tasks.isDone == true">
+      <td><input class="checkbox" (click)="changeStatus(tasks.id)" type="checkbox"></td>
+      <td>
+        <input readonly class="noBorder" (keyup)="updateTask($event, tasks.description, tasks.id)" [(ngModel)]="tasks.description"
+               id="tachado"
+               >
+      </td>
+      <td>
+        {{tasks.createAt | date}}
+      </td>
+      <td>
+        <button (click)="deleteTask(tasks.id)" class="btn btn-danger"
+                type="button">Eliminar
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
 </body>

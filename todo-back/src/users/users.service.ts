@@ -72,7 +72,7 @@ export class UsersService {
 
 
     // TODO buscar id y nombre en la misma funcion, depende de si es number o no.
-    async findOneById(value: number){
+    async findOneById(value: number) {
 
         let user: any
         // id

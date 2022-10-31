@@ -1,5 +1,5 @@
 import {Injectable} from '@nestjs/common';
-import {Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import {Task} from '../../tasks/entities/task.entity';
 import {AutoMap} from '@automapper/classes';
 import {Category} from "../../category/entities/category.entity";

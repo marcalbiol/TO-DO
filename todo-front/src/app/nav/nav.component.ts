@@ -7,6 +7,7 @@ import {AuthService} from '../auth/auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  title?: string = 'TO-DO app';
 
   constructor(public authService: AuthService) {
   }

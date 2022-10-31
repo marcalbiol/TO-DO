@@ -8,8 +8,8 @@ import {Router} from '@angular/router';
   providedIn: 'root',
 })
 export class HomeService {
-  private urlEndPoint: string = 'http://localhost:3000';
   userId!: number;
+  private urlEndPoint: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient, private authService: AuthService, private router: Router,) {
 
@@ -26,16 +26,27 @@ export class HomeService {
     return await this.http.get<Task[]>(this.urlEndPoint + "/tasks/" + userId).toPromise();
   }
 
+  async getTasksWithCatId(categoryId: number) {
+    return await this.http.get(this.urlEndPoint + "/tasks/ " + categoryId).toPromise();
+  }
+
   async deleteTask(taskId: number) {
     return this.http.delete(this.urlEndPoint + "/tasks/delete/" + taskId).subscribe(res => {
       console.log("Tarea eliminada")
     });
   }
 
-  async createTask(description: object, userId: number) {
-    return this.http.post(this.urlEndPoint + "/tasks/create/" + userId, {description}).subscribe(() => {
+  async createTask(description: object, categoryId: number) {
+    return this.http.post(this.urlEndPoint + "/category/create/task/" + categoryId, {description}).subscribe(() => {
       console.log("Tarea creada");
     })
+  }
+
+  async createCategory(name: object, userId: number) {
+    console.log(userId)
+    return this.http.post(this.urlEndPoint + '/category/create/' + userId, {name}).subscribe(() => {
+      console.log("Categoria creada")
+    });
   }
 
   async updateTask(description: string, taskId: number) {
@@ -44,10 +55,13 @@ export class HomeService {
     })
   }
 
-  async changeStatus(taskId: number){
+  async changeStatus(taskId: number) {
     return this.http.get(this.urlEndPoint + "/tasks/updateCompleted/" + taskId).subscribe(() => {
       console.log("Status cambiado")
     })
   }
+
+  //TODO eliminar categoria
+
   //TODO implementar metodo crear nueva tarea autenticansdo el jwt
 }

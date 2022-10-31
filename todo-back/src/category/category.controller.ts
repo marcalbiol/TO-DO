@@ -1,4 +1,4 @@
-import {Controller, Get, Post, Body, Patch, Param, Delete, Res, HttpStatus, Put} from '@nestjs/common';
+import {Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res} from '@nestjs/common';
 import {CategoryService} from './category.service';
 import {CreateCategoryDto} from './dto/create-category.dto';
 import {UpdateCategoryDto} from './dto/update-category.dto';
@@ -13,7 +13,7 @@ export class CategoryController {
 
 
     @Get("/:id")
-    async getTasks(@Param("id") id: number, @Res() response){
+    async getTasks(@Param("id") id: number, @Res() response) {
 
         const categoryWithTasks = await this.categoryService.findOneById(id);
         return response.status(HttpStatus.OK).json({
@@ -24,8 +24,8 @@ export class CategoryController {
     @Post("/create/:userId")
     async create(@Body() category: CreateCategoryDto, @Param('userId') id: number,
                  @Res() response): Promise<Category> {
-        const newCategory = this.categoryService.create(category, id);
-        return response.status(HttpStatus.OK).json({newCategory});
+        await this.categoryService.create(category, id);
+        return response.status(HttpStatus.OK).json("Categoria Creada");
     }
 
 

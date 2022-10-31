@@ -30,12 +30,12 @@ export class TaskService {
 
         //TODO controlar si es null
         return await this.classMapper.mapArrayAsync(await this.taskRepository.find({
-            relations: ['user'],
-            where: {user: {id: id}},
+            relations: ['category'],
+            where: {category: {id: id}},
         }), Task, ReadTaskDto)
     }
 
-    async completeTask(id: number){
+    async completeTask(id: number) {
 
         const taskFromDb = await this.taskRepository.findOne({
             where: {id}

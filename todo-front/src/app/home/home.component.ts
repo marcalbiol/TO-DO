@@ -2,66 +2,64 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth/auth.service';
 import {HomeService} from './home.service';
 import {User} from '../users/user';
-import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-home', templateUrl: './home.component.html', styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  title: string = "TO-DO app"
   userData!: User;
+  userId!: any;
+  categories!: any;
   tasks!: any;
   token!: any;
-  userId!: number;
-  newTaskName!: any;
-  routerLink: string = '/home';
+  newTask!: any;
+  newCategory!: any;
+  categoryId!: number;
 
-  constructor(
-    public authService: AuthService,
-    public homeService: HomeService,
-    private router: Router
-  ) {
+  constructor(public authService: AuthService, public homeService: HomeService,) {
   }
 
   ngOnInit() {
+
     this.token = sessionStorage.getItem('user');
+
     this.homeService.getUser(this.token).then((res) => {
       this.userData = res.user;
-      this.userId = res.user.id; // obetenemos el id del usuario para recoger las tareas asociadas
+      this.categories = res.user.categories
+      this.userId = res.user.id;
 
-      // todas las tareas
-      this.getAllTasks(this.userId)
+      console.log(res)
+
+      this.getTasks(this.categoryId)
     });
 
     if (this.token == null) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Necesitas estar logeado',
+        icon: 'error', title: 'Oops...', text: 'Necesitas estar logeado',
       });
       // reedirect al login
     }
   }
 
-  getAllTasks(userId: number) {
-    this.homeService.getTasks(userId).then((res) => {
+  async getTasks(categoryId: number) {
+    this.categoryId = categoryId;
+    console.log(categoryId)
+    await this.homeService.getTasksWithCatId(categoryId).then((res) => {
       this.tasks = res
     })
   }
 
-  async deleteTask(taskId: number){
+  async deleteTask(taskId: number) {
     await this.homeService.deleteTask(taskId).then(() => {
-
       this.ngOnInit()
     })
   }
 
-  updateTask(event: any, value: string, taskId: number) {
+  async updateTask(event: any, value: string, taskId: number) {
     if (event.keyCode == 13) {
-      this.homeService.updateTask(value, taskId).then(() => {
-
+      await this.homeService.updateTask(value, taskId).then(() => {
         this.ngOnInit()
       })
     }
@@ -71,16 +69,24 @@ export class HomeComponent implements OnInit {
   async insertNewTask(event: any) {
     if (event.keyCode == 13) {
       // pasamos los parametros para crear la tarea
-      this.homeService.createTask(this.newTaskName, this.userId).then(r => {
-
-       this.ngOnInit()
+      await this.homeService.createTask(this.newTask, this.categoryId).then(r => {
+        this.ngOnInit()
       });
     }
   }
 
-  async changeStatus(taskId: number){
-     await this.homeService.changeStatus(taskId).then(() => {
+  async insertNewCategory(event: any) {
+    if (event.keyCode == 13) {
+      // pasamos los parametros para crear la tarea
+      await this.homeService.createCategory(this.newCategory, this.userId).then(r => {
+        this.ngOnInit()
 
+      });
+    }
+  }
+
+  async changeStatus(taskId: number) {
+    await this.homeService.changeStatus(taskId).then(() => {
       this.ngOnInit()
     })
   }

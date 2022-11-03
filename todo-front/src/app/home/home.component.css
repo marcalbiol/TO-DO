@@ -1,5 +1,6 @@
 #content {
   display: flex;
+  height: 94vh;
 }
 
 #content #sidebar {
@@ -14,6 +15,11 @@
   background: #212529;
   color: white;
   outline: none;
+}
+.dropdown{
+  margin: 1rem 1rem 2rem;
+  position: absolute;
+  bottom: 0;
 }
 
 #tachado{

@@ -1,99 +1,111 @@
 <body *ngIf="authService.logIn" class="font-poppins antialiased">
 <div id="content">
-<div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; background-color: #212121">
-  <a *ngIf="categories" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-    Categorias
-  </a>
-  <hr>
-  <ul class="nav nav-pills flex-column mb-auto" *ngFor="let cate of categories">
-    <li>
-      <a style="cursor:pointer;" (click)="getTasks(cate.id)" class="nav-link text-white" aria-current="page">
-        &#x27a1;&#xfe0f;{{cate.name}}</a>
-    </li>
-    </ul>
-  <input class="noBorder" (keyup)="insertNewCategory($event)" [(ngModel)]="newCategory" id="category" placeholder="+ Nueva categoria"
-         style="margin-top: 16rem;"
-         type="text">
-
-  <!--TODO MODIFICAR MENU USUARIO-->
-  <hr>
-  <div class="dropdown">
-    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2 ">
-      <strong>mdo</strong>
+  <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
+       style="width: 280px; background-color: #212121">
+    <a style="margin-left: 1rem" *ngIf="categories" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      Categorias
     </a>
-    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
-      <li><a class="dropdown-item" href="#">New project...</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
+    <hr>
+    <ul *ngFor="let cate of categories">
+      <li style="background-color: #212529" class="list-group-item">
+        <a style="cursor:pointer;" (click)="getTasks(cate.id)"  aria-current="page">
+          &#x27a1;&#xfe0f; {{cate.name | titlecase}}</a>
+      </li>
     </ul>
+
+
+    <!--TODO MODIFICAR MENU USUARIO-->
+
+    <div class="dropdown">
+      <input class="noBorder" (keyup)="insertNewCategory($event)" [(ngModel)]="newCategory" id="category"
+             placeholder="+ Nueva categoria"
+             type="text">
+      <hr>
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+         data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://pbs.twimg.com/media/E-G-U4EVcAAsmHy.jpg" alt="" width="32" height="32" class="rounded-circle me-2 ">
+        <strong>{{userData.username | titlecase}}</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div *ngIf="categoryId" class="container" id="tables">
-  <!-- mensaje de que aun no tiene categoria seleccionada -->
-  <h4 style="margin-bottom: 1rem; margin-top: 1rem" class="card-title mb-3.5">Listado de tareas</h4>
 
-    <input class="newTask" (keyup)="insertNewTask($event)" [(ngModel)]="newTask" id="text" placeholder="+Añadir nueva tarea..."
+
+
+  <div *ngIf="categoryId" class="container" id="tables">
+    <!-- mensaje de que aun no tiene categoria seleccionada -->
+    <h4 style="margin-bottom: 1rem; margin-top: 1rem" class="card-title mb-3.5">Listado de tareas</h4>
+
+    <input class="newTask" (keyup)="insertNewTask($event)" [(ngModel)]="newTask" id="text"
+           placeholder="+Añadir nueva tarea..."
            type="text">
-  <table id="table" class="table table-dark mt-12">
-    <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Tarea</th>
-      <th scope="col">Fecha</th>
-      <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody *ngFor="let tasks of tasks['tasks']">
-    <tr *ngIf="tasks.isDone == false">
-      <td><input class="checkbox" (click)="changeStatus(tasks.id)" type="checkbox"></td>
-      <td>
-        <input class="noBorder" (keyup)="updateTask($event, tasks.description, tasks.id)" [(ngModel)]="tasks.description"
-               type="text">
-      </td>
-      <td>
-        {{tasks.createAt | date}}
-      </td>
-      <td>
-        <button (click)="deleteTask(tasks.id)" class="btn btn-danger"
-                type="button">Eliminar
-        </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-  <hr>
-  <table class="table table-dark">
-    <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Tarea</th>
-      <th scope="col">Fecha</th>
-      <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody *ngFor="let tasks of tasks['tasks']">
-    <tr *ngIf="tasks.isDone == true">
-      <td><input class="checkbox" (click)="changeStatus(tasks.id)" type="checkbox"></td>
-      <td>
-        <input readonly class="noBorder" (keyup)="updateTask($event, tasks.description, tasks.id)" [(ngModel)]="tasks.description"
-               id="tachado"
-               >
-      </td>
-      <td>
-        {{tasks.createAt | date}}
-      </td>
-      <td>
-        <button (click)="deleteTask(tasks.id)" class="btn btn-danger"
-                type="button">Eliminar
-        </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+    <table id="table" class="table table-dark mt-12">
+      <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Tarea</th>
+        <th scope="col">Fecha</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let tasks of tasks['tasks']">
+      <tr *ngIf="tasks.isDone == false">
+        <td><input class="checkbox" (click)="changeStatus(tasks.id)" type="checkbox"></td>
+        <td>
+          <input class="noBorder" (keyup)="updateTask($event, tasks.description, tasks.id)"
+                 [(ngModel)]="tasks.description"
+                 type="text">
+        </td>
+        <td>
+          {{tasks.createAt | date}}
+        </td>
+        <td>
+          <button (click)="deleteTask(tasks.id)" class="btn btn-danger"
+                  type="button">Eliminar
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <hr>
+    <table class="table table-dark">
+      <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Tarea</th>
+        <th scope="col">Fecha</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let tasks of tasks['tasks']">
+      <tr *ngIf="tasks.isDone == true">
+        <td><input class="checkbox" (click)="changeStatus(tasks.id)" type="checkbox" checked></td>
+        <td>
+          <input readonly class="noBorder" (keyup)="updateTask($event, tasks.description, tasks.id)"
+                 [(ngModel)]="tasks.description"
+                 id="tachado"
+          >
+        </td>
+        <td>
+          {{tasks.createAt | date}}
+        </td>
+        <td>
+          <button (click)="deleteTask(tasks.id)" class="btn btn-danger"
+                  type="button">Eliminar
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 

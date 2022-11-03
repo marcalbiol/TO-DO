@@ -40,8 +40,8 @@ export class RegisterComponent implements OnInit {
     const user = {username: this.user.username, password: this.user.password}
     this.authService.register(user).subscribe(value => {
         Swal.fire(
-          'Good job!',
-          'You clicked the button!',
+          'Usuario registrado con éxito!',
+          `Bienvenido, ${user.username}!`,
           'success'
         )
         console.log(`Usuario ${user.username} creado con éxito`)

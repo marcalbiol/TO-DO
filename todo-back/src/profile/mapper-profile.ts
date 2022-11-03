@@ -20,12 +20,10 @@ export class MapperProfile extends AutomapperProfile {
     override get profile() {
         return (mapper) => {
             createMap(mapper, User, ReadUserDto, forMember((dest) => dest.categories, mapFrom(source => source.categories)));
-            // createMap(mapper, User, ReadUserNoPwDto, forMember((dest) => dest.task, mapFrom(source => source.tasks))); // mappeo para leer
             createMap(mapper, CreateUserDto, User, forMember((dest) => dest.id, ignore())) // ignora el id en el mapping
             createMap(mapper, UpdateUserDto, User, forMember((dest) => dest.id, ignore()));
             createMap(mapper, Task, ReadTaskDto);
             createMap(mapper, Category, ReadCategoryDto, forMember((dest) => dest.tasks, mapFrom(source => source.tasks)));
-            //TODO mapp category
         }
     }
 }

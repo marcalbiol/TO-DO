@@ -4,7 +4,5 @@ import {ReadTaskDto} from "./read-task.dto";
 
 export class ReadTaskWithUserDto extends ReadTaskDto {
 
-    @AutoMap()
-    user!: User[] | number;
-
+    @AutoMap() user!: User[] | number;
 }

@@ -22,6 +22,7 @@ export class TaskService {
     }
 
     async create(task: CreateTaskDto, userId: number): Promise<Task> {
+
         task.user = userId;
         return await this.taskRepository.save(task);
     }
@@ -59,13 +60,5 @@ export class TaskService {
     fillData(cuenta: Task[]) {
 
         this.taskRepository.save(cuenta);
-    }
-
-    //TODO
-    private handleError(error: any) {
-        if (error === 1300) {
-            // codigo thor new... luego se llama al metodo privado dentro del
-            //catch con el parametro del error
-        }
     }
 }

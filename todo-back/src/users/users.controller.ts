@@ -37,7 +37,9 @@ export class UsersController {
         @Res() response,
         @Body(MapPipe(User, CreateUserDto)) user: CreateUserDto,
     ) {
+
         const User = await this.usersService.createUser(user);
+
         return response.status(HttpStatus.CREATED).json({
             User,
         });
@@ -48,7 +50,9 @@ export class UsersController {
     @Get()
     @UseInterceptors(MapInterceptor(User, ReadUserDto))
     async fetchAll(@Res() response, @Query() paginationDto: PaginationDto) {
+
         const users = await this.usersService.findAll();
+
         return response.status(HttpStatus.OK).json({
             users,
         });
@@ -56,7 +60,9 @@ export class UsersController {
 
     @Get('/:id') // by Id
     async findById(@Res() response, @Param('id') value: number) {
+
         const user = await this.usersService.findOneById(value);
+
         return response.status(HttpStatus.OK).json({
             user,
         });
@@ -64,12 +70,15 @@ export class UsersController {
 
     @Get('username/:name')
     async findByName(@Res() response, @Param('name') value: string) {
+
         const user = await this.usersService.findOneByName(value);
+
         return response.status(HttpStatus.OK).json({user});
     }
 
     @Patch(':id')
     update(@Param('id') id: number, @Body() updateUser: UpdateUserDto) {
+
         return this.usersService.update(id, updateUser);
     }
 
@@ -77,6 +86,7 @@ export class UsersController {
 
     @Delete(':id')
     remove(@Param('id') id: number) {
+
         return this.usersService.remove(id);
     }
 }

@@ -12,5 +12,4 @@ export class CreateUserDto {
     @AutoMap()
     @IsString()
     password: string;
-
 }

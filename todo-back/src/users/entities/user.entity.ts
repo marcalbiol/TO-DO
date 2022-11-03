@@ -7,6 +7,7 @@ import {Category} from "../../category/entities/category.entity";
 @Injectable()
 @Entity()
 export class User {
+
     @AutoMap()
     @PrimaryGeneratedColumn()
     id?: number;
@@ -19,13 +20,11 @@ export class User {
     @Column()
     password?: string;
 
-    @AutoMap()
     @OneToMany(() => Task, (task) => task.user, {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
     })
     tasks?: Task[];
-
 
     @AutoMap()
     @OneToMany(() => Category, (category) => category.user, {

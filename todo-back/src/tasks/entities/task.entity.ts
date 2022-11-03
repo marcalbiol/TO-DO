@@ -34,5 +34,4 @@ export class Task {
     @AutoMap()
     @Column({default: false})
     isDone: boolean;
-
 }

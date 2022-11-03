@@ -5,5 +5,4 @@ export class CreateTaskDto extends Task {
 
     @IsString()
     description: string;
-
 }

@@ -13,6 +13,5 @@ export class ReadUserDto {
 
     @AutoMap()
     categories?: Category[];
-
 }
 

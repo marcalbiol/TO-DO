@@ -9,7 +9,6 @@ export class SeedService {
 
 
     constructor(
-        // injeccion
         private readonly taskService: TaskService,
         private readonly usersService: UsersService
     ) {

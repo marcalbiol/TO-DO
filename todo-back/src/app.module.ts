@@ -31,6 +31,7 @@ import {Category} from "./category/entities/category.entity";
             dropSchema: false,
             autoLoadEntities: true,
             keepConnectionAlive: true
+
         }), UsersModule, TaskModule, SeedModule, CommonModule, AuthModule,
         AutomapperModule.forRoot({
             strategyInitializer: classes()
@@ -57,4 +58,17 @@ type: "mysql",
             dropSchema: false,
             autoLoadEntities: true,
             keepConnectionAlive: true
+    type: "mysql",
+            host: "localhost",
+            port: 3306,
+            username: "root",
+            password: "rootroot",
+            database: "todo_app",
+            entities: [User, Task, Category],
+            synchronize: true,
+            dropSchema: true,
+            autoLoadEntities: true,
+            keepConnectionAlive: true
+
+
  */

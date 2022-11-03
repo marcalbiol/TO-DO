@@ -11,5 +11,4 @@ export class ReadCategoryDto {
 
     @AutoMap()
     readonly tasks: Task[]
-
 }

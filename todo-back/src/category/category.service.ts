@@ -11,14 +11,9 @@ import {Mapper} from "@automapper/core";
 
 @Injectable()
 export class CategoryService {
-    constructor(
-        @InjectRepository(Category)
-        private categoryRepository: Repository<Category>,
-        @InjectRepository(Task)
-        private taskRepository: Repository<Task>,
-        @InjectMapper()
-        private readonly classMapper: Mapper
-    ) {
+    constructor(@InjectRepository(Category) private categoryRepository: Repository<Category>,
+                @InjectRepository(Task) private taskRepository: Repository<Task>,
+                @InjectMapper() private readonly classMapper: Mapper) {
     }
 
     create(createCategoryDto: CreateCategoryDto, userId: number): Promise<Category> {
@@ -31,19 +26,19 @@ export class CategoryService {
         let category: any
         if (!isNaN(value)) {
             category = await this.categoryRepository.findOne({
-                    where: {
-                        id: value
-                    },
-                    relations: ['tasks']
-                }
-            );
+                where: {
+                    id: value
+                }, relations: ['tasks']
+            });
         }
         if (!category) throw new NotFoundException("Categoria no encontrada");
+
         return await category
     }
 
 
     async findIfCategoryExists(id: number): Promise<boolean> {
+
         let bool;
         bool = await this.categoryRepository.findOne({
             where: {
@@ -56,6 +51,7 @@ export class CategoryService {
 
 
     async newTask(task: CreateTaskDto, catId: number): Promise<Task> {
+
         const categoryId = catId;
 
         let categoryExists = await this.findIfCategoryExists(categoryId)

@@ -8,6 +8,7 @@ import {JwtPayload} from "./jwt.payload";
 
 @Injectable()
 export class AuthService {
+
     constructor(
         private userService: UsersService,
         private readonly jwtService: JwtService) {
@@ -26,13 +27,15 @@ export class AuthService {
         if (!isMatch) {
             throw new HttpException('Invalid credentials', HttpStatus.UNAUTHORIZED);
         }
-        //TODO transfer to Dto
+
         return user;
     }
 
     async generateAccessToken(username: string) {
+
         const user = await this.userService.findOne({where: {username}});
         const payload: JwtPayload = {userId: user.id};
+
         return {
             access_token: this.jwtService.sign(payload),
         };

@@ -20,16 +20,15 @@ export class UsersService {
     ) {
     }
 
-
-    //TODO NO REPETIR CODIGO
-
     async encrypt(pass: any) {
 
         const salt = await bcrypt.genSalt();
+
         return await bcrypt.hash(pass, salt);
     }
 
     async createUser(user: CreateUserDto): Promise<ReadUserDto> {
+
         const {username} = user;
 
         const userInDb = await this.userRepository.findOne({
@@ -70,8 +69,6 @@ export class UsersService {
         return this.classMapper.mapAsync(await user, User, ReadUserDto);
     }
 
-
-    // TODO buscar id y nombre en la misma funcion, depende de si es number o no.
     async findOneById(value: number) {
 
         let user: any
@@ -97,7 +94,6 @@ export class UsersService {
     async findByPayload(username: any): Promise<User> {
         return await this.findOne({where: {username}})
     }
-
 
     async update(id: number, updateUser: UpdateUserDto) {
         // find user by id

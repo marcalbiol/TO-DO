@@ -21,14 +21,14 @@ import {Category} from "./category/entities/category.entity";
         ConfigModule.forRoot(),
         TypeOrmModule.forRoot({
             type: "mysql",
-            host: process.env.DATABASE_HOST,
-            port: 33060,
-            username: process.env.DATABASE_USER,
-            password: process.env.DATABASE_PASSWORD,
-            database: process.env.DATABASE_NAME,
+            host: "localhost",
+            port: 3306,
+            username: "root",
+            password: "rootroot",
+            database: "todo_app",
             entities: [User, Task, Category],
             synchronize: true,
-            dropSchema: false,
+            dropSchema: true,
             autoLoadEntities: true,
             keepConnectionAlive: true
 
@@ -69,6 +69,4 @@ type: "mysql",
             dropSchema: true,
             autoLoadEntities: true,
             keepConnectionAlive: true
-
-
  */

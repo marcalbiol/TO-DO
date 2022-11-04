@@ -65,13 +65,11 @@ export class CategoryService {
     update(id: number, updateCategoryDto: UpdateCategoryDto) {
 
         return this.categoryRepository.update(id, updateCategoryDto)
-        //TODO response
     }
 
     remove(id: number) {
 
         return this.categoryRepository.delete(id)
-        //TODO response
     }
 
 }

@@ -27,7 +27,6 @@ export class UsersController {
     }
 
     // TODO IMPLEMENT AUTH JSTOKEN
-    // TODO CREAR CATEGORIAS
 
     //@UseGuards(AuthGuard())
     @ApiBearerAuth()
@@ -81,8 +80,6 @@ export class UsersController {
 
         return this.usersService.update(id, updateUser);
     }
-
-    //TODO ENDPOINTS PARA CAMBIAR EL STATUS
 
     @Delete(':id')
     remove(@Param('id') id: number) {
